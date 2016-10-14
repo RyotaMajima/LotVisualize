@@ -3,12 +3,14 @@
 #include "define.h"
 
 enum{
-    Wafer,DB,WB
+    _Wafer,_DB,_WB
 };
 
 class Lot{
 public:
     int pcs;
+    int time;
+    bool nowProcess;
 
 public:
     Lot(); //constructor
@@ -16,6 +18,8 @@ public:
 
 Lot::Lot(){
     pcs = 8960;
+    time = 0;
+    nowProcess = false;
 }
 
 class State{
@@ -27,8 +31,8 @@ public:
 };
 
 State::State(){
-    currentProcess = Wafer;
-    nextProcess = DB;
+    currentProcess = _Wafer;
+    nextProcess = _DB;
 }
 
 class Process{
@@ -43,6 +47,6 @@ public:
 
 Process::Process(){
     capacity = 1;
-    processTime = 25;
+    processTime = 15;
     isEmpty = true;
 }
