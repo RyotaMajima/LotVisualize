@@ -1,15 +1,28 @@
 #include <iostream>
 #include <vector>
 
-#include "Header.h"
-
-using namespace std;
+#include "define.h"
+#include "header.h"
 
 
 int main(){
 
-    Lot lot;
     vector<Lot> lots(5);
+    vector<State> lotStates(5);
+
+    Process DB;
+
+    for (int i = 0; i < T; i += timeStep){
+        cout << "T = " << i << endl << endl;
+
+        if (DB.isEmpty){
+            for (int j = 0; j < lots.size(); j++){
+
+            }
+        }
+
+    }
+
 
     return 0;
 }

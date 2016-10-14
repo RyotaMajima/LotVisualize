@@ -1,16 +1,48 @@
 #pragma once
 
-using namespace std;
+#include "define.h"
+
+enum{
+    Wafer,DB,WB
+};
 
 class Lot{
 public:
     int pcs;
-    int time;
 
 public:
-    Lot();
+    Lot(); //constructor
 };
 
 Lot::Lot(){
-    cout << "constructor" << endl;
+    pcs = 8960;
+}
+
+class State{
+public:
+    int nextProcess;
+    int currentProcess;
+public:
+    State();
+};
+
+State::State(){
+    currentProcess = Wafer;
+    nextProcess = DB;
+}
+
+class Process{
+public:
+    int capacity;
+    double processTime;
+    bool isEmpty;
+
+public:
+    Process(); //constructor
+};
+
+Process::Process(){
+    capacity = 1;
+    processTime = 25;
+    isEmpty = true;
 }
