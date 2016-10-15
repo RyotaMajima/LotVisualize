@@ -2,11 +2,10 @@
 
 #include "define.h"
 
-enum{
-    _None, _Wafer,_DB,_WB
-};
 
 class Lot{
+private:
+    static int NUM;
 public:
     int pcs;
     int time; //duaration time from starting DB
@@ -16,7 +15,10 @@ public:
 
 public:
     Lot(); //constructor
+    void showData(); //show lot state
 };
+
+int Lot::NUM = 0;
 
 Lot::Lot(){
     pcs = 8960;
@@ -24,6 +26,12 @@ Lot::Lot(){
     current = "None";
     next = "DB";
     nowProcess = false;
+    NUM++;
+}
+
+void Lot::showData(){
+
+
 }
 
 class Process{
