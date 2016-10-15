@@ -10,7 +10,10 @@ class Lot{
 public:
     int pcs;
     int time;
+    int current;
+    int next;
     bool nowProcess;
+
 
 public:
     Lot(); //constructor
@@ -19,20 +22,9 @@ public:
 Lot::Lot(){
     pcs = 8960;
     time = 0;
+    current = _Wafer;
+    next = _DB;
     nowProcess = false;
-}
-
-class State{
-public:
-    int nextProcess;
-    int currentProcess;
-public:
-    State();
-};
-
-State::State(){
-    currentProcess = _Wafer;
-    nextProcess = _DB;
 }
 
 class Process{

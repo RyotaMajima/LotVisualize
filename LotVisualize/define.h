@@ -5,3 +5,4 @@ using namespace std;
 
 const int T = 50;
 const int timeStep = 5;
+const int N = 4;
