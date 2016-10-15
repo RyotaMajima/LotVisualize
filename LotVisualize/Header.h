@@ -7,6 +7,7 @@ class Lot{
 private:
     static int NUM;
 public:
+    int lotNum;
     int pcs;
     int time; //duaration time from starting DB
     string current;
@@ -21,17 +22,19 @@ public:
 int Lot::NUM = 0;
 
 Lot::Lot(){
+    NUM++;
+    lotNum = NUM;
     pcs = 8960;
     time = 0;
     current = "None";
     next = "DB";
     nowProcess = false;
-    NUM++;
 }
 
 void Lot::showData(){
-
-
+    cout << "No." << lotNum << "\t" << pcs << "\t";
+    cout << current << "\t" << next << "\t";
+    cout << boolalpha << nowProcess << endl;
 }
 
 class Process{

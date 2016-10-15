@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <iomanip>
 
 #include "define.h"
 #include "header.h"
@@ -16,10 +17,8 @@ int main(){
         }
 
         cout << "T = " << i << endl << endl; // time stamps
-
-        cout << "No." << "\t" << "current" << "\t" << "time" << endl;
         for (int j = 0; j < N; j++){
-            cout << j << "\t" << lots[j].current << "\t" << lots[j].time << endl;
+            lots[j].showData();
         }
 
         if (DB.isEmpty){
