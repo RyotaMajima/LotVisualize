@@ -17,6 +17,7 @@ public:
 public:
     Lot(); //constructor
     void showData(); //show lot state
+    void start(Process prc); //lot starting for some process
 };
 
 int Lot::NUM = 0;
@@ -34,6 +35,10 @@ void Lot::showData(){
     cout << "No." << lotNum << "\t" << pcs << "\t";
     cout << current << "\t" << next << "\t";
     cout << boolalpha << nowProcess << endl;
+}
+
+void start(Process prc){
+
 }
 
 class Process{
