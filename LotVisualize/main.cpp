@@ -9,7 +9,7 @@
 int main(){
 
     vector<Lot> lots(N);
-    Process DB;
+    Process DB("DB", 15);
 
     for (int i = 0; i < T; i += timeStep){
         for (int j = 0; j < N; j++){
@@ -21,7 +21,7 @@ int main(){
             lots[j].showData();
         }
 
-        if (DB.isEmpty){
+        if (DB.isUsed == false){
             int index = 0;
             for (int j = 0; j < N; j++){
                 if (lots[j].current == "None" && lots[j].next == "DB"){
@@ -33,7 +33,7 @@ int main(){
 
             lots[index].current = "DB";
             lots[index].nowProcess = true;
-            DB.isEmpty = false;
+            DB.isUsed = true;
         }
         else{
             for (int j = 0; j < N; j++){
@@ -42,7 +42,7 @@ int main(){
                         lots[j].current = "None";
                         lots[j].next = "WB";
                         lots[j].nowProcess = false;
-                        DB.isEmpty = true;
+                        DB.isUsed = false;
                         cout << "lot " << j << "\t" << "DB end." << endl;
                     }
                     break;

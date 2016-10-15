@@ -25,7 +25,6 @@ Lot::Lot(){
     NUM++;
     lotNum = NUM;
     pcs = 8960;
-    time = 0;
     current = "None";
     next = "DB";
     nowProcess = false;
@@ -39,16 +38,20 @@ void Lot::showData(){
 
 class Process{
 public:
-    int capacity;
-    double processTime;
-    bool isEmpty;
+    string name;
+    int processTime;
+    bool isUsed;
+    int currentLot;
+    int time;
 
 public:
-    Process(); //constructor
+    Process(string _name, int _processTime); //constructor
 };
 
-Process::Process(){
-    capacity = 1;
-    processTime = 15;
-    isEmpty = true;
+Process::Process(string _name, int _processTime){
+    name = _name;
+    processTime = _processTime;
+    isUsed = false;
+    currentLot = 0;
+    time = 0;
 }
