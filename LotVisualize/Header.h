@@ -3,7 +3,7 @@
 #include "define.h"
 
 enum{
-    _Wafer,_DB,_WB
+    _None, _Wafer,_DB,_WB
 };
 
 class Lot{
@@ -13,7 +13,6 @@ public:
     int current;
     int next;
     bool nowProcess;
-
 
 public:
     Lot(); //constructor
