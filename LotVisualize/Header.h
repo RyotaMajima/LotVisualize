@@ -25,7 +25,7 @@ Lot::Lot(){
     NUM++;
     lotNum = NUM;
     pcs = 8960;
-    current = "None";
+    current = "Wafer";
     next = "DB";
     nowProcess = false;
 }
