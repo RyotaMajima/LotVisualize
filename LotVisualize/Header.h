@@ -9,9 +9,9 @@ enum{
 class Lot{
 public:
     int pcs;
-    int time;
-    int current;
-    int next;
+    int time; //duaration time from starting DB
+    string current;
+    string next;
     bool nowProcess;
 
 public:
@@ -21,8 +21,8 @@ public:
 Lot::Lot(){
     pcs = 8960;
     time = 0;
-    current = _Wafer;
-    next = _DB;
+    current = "None";
+    next = "DB";
     nowProcess = false;
 }
 
