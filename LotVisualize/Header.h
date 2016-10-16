@@ -42,6 +42,7 @@ void Lot::showData(){
 class Process{
 public:
     string name;
+    string nextName;
     int processTime;
     bool isUsed;
     int currentLot;
@@ -50,15 +51,16 @@ public:
     int cnt;
 
 public:
-    Process(string _name, int _processTime); //constructor
+    Process(string _name, string nextName, int _processTime); //constructor
     int searchLot(vector<Lot> &product);
     void lotStart(vector<Lot> &product);
-    void lotEnd();
+    void lotEnd(vector<Lot> &product);
     void update();
 };
 
-Process::Process(string _name, int _processTime){
+Process::Process(string _name, string _nextName, int _processTime){
     name = _name;
+    nextName = _nextName;
     processTime = _processTime;
     isUsed = false;
     currentLot = 0;
@@ -85,10 +87,22 @@ void Process::lotStart(vector<Lot> &product){
         return;
     }
     else{
-        cout << "No. " << product[index].lotNum << " " << name << "  start" << endl;
+        cout << "No." << product[index].lotNum << " " << name << "  start" << endl;
         product[index].current = name;
         product[index].nowProcess = true;
         isUsed = true;
         cnt++;
     }
+}
+
+void Process::lotEnd(vector<Lot> &product){
+    product[index].current = "None";
+    product[index].next = nextName;
+    product[index].nowProcess = false;
+    isUsed = false;
+    index = -1;
+}
+
+void Process::update(){
+    time += timeStep;
 }

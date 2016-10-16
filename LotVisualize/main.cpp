@@ -9,7 +9,7 @@
 int main(){
 
     vector<Lot> lots(N);
-    Process DB("DB", 15);
+    Process DB("DB", "WB", 15);
 
     for (int i = 0; i < T; i += timeStep){
         for (int j = 0; j < N; j++){
