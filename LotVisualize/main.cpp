@@ -10,18 +10,19 @@ int main(){
         cout << "\t" << "pcs" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
 
+        //show lot status
         for (auto &lot : product){
             lot.showData();
         }
 
-        if (DB.isUsed == false){
-            DB.lotStart(product);
-        }
-        else{
+        if (DB.isUsed){
             DB.update();
             if (DB.time >= DB.processTime){
                 DB.lotEnd(product);
             }
+        }
+        else{
+            DB.lotStart(product);
         }
 
         cout << endl << endl;
