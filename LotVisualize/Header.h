@@ -87,8 +87,10 @@ void Process::lotStart(vector<Lot> &product){
         return;
     }
     else{
+        cout << endl;
         cout << "No." << product[index].lotNum << " " << name << "  start" << endl;
         product[index].current = name;
+        product[index].next = nextName;
         product[index].nowProcess = true;
         isUsed = true;
         cnt++;
@@ -96,10 +98,12 @@ void Process::lotStart(vector<Lot> &product){
 }
 
 void Process::lotEnd(vector<Lot> &product){
+    cout << endl;
+    cout << "No." << product[index].lotNum << " " << name << "  end" << endl;
     product[index].current = "None";
-    product[index].next = nextName;
     product[index].nowProcess = false;
     isUsed = false;
+    time = 0;
     index = -1;
 }
 
