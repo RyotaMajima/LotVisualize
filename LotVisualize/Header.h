@@ -66,9 +66,9 @@ Process::Process(string _name, string _nextName, int _processTime){
 }
 
 int Process::searchLot(vector<Lot> &product){
-    for (int index = 0; index < N; index++){
-        if (product[index].next == name){
-            return index;
+    for (int idx = 0; idx < N; idx++){
+        if (product[idx].next == name){
+            return idx;
         }
     }
 
@@ -84,7 +84,7 @@ void Process::lotStart(vector<Lot> &product){
     }
     else{
         cout << endl;
-        cout << "No." << product[index].lotNum << " " << name << "  start." << endl;
+        cout << "No." << product[index].lotNum << " " << name << " start." << endl;
         product[index].current = name;
         product[index].next = nextName;
         product[index].nowProcess = true;
@@ -95,7 +95,7 @@ void Process::lotStart(vector<Lot> &product){
 
 void Process::lotEnd(vector<Lot> &product){
     cout << endl;
-    cout << "No." << product[index].lotNum << " " << name << "  end." << endl;
+    cout << "No." << product[index].lotNum << " " << name << " end." << endl;
     product[index].current = "None";
     product[index].nowProcess = false;
     isUsed = false;
