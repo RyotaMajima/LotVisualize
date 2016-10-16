@@ -23,7 +23,7 @@ int Lot::NUM = 0;
 Lot::Lot(){
     NUM++;
     lotNum = NUM;
-    pcs = 8960;
+    pcs = (lotNum % 4 != 0) ? 8960 : 1440;
     current = "Wafer";
     next = "DB";
     nowProcess = false;
