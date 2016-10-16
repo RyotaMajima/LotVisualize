@@ -10,8 +10,8 @@ int main(){
         cout << "\t" << "pcs" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
 
-        for (int j = 0; j < N; j++){
-            product[j].showData();
+        for (auto &lot : product){
+            lot.showData();
         }
 
         if (DB.isUsed == false){
