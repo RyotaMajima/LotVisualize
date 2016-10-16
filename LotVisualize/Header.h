@@ -35,10 +35,6 @@ void Lot::showData(){
     cout << boolalpha << nowProcess << endl;
 }
 
-//void start(Process prc){
-//
-//}
-
 class Process{
 public:
     string name;
