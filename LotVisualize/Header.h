@@ -79,8 +79,15 @@ int Process::searchLot(vector<Lot> &product){
 
 void Process::lotStart(vector<Lot> &product){
     index = searchLot(product);
+
     if (index < 0){
         cerr << "next " << name << " lot is not found" << endl;
+        return;
     }
-
+    else{
+        product[index].current = name;
+        product[index].nowProcess = true;
+        isUsed = true;
+        cnt++;
+    }
 }
