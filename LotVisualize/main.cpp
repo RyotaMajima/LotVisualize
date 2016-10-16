@@ -10,7 +10,7 @@ int main(){
         cout << "\t" << "pcs" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
 
-        //show lot status
+        //show lot state
         for (auto &lot : product){
             lot.showData();
         }

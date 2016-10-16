@@ -4,13 +4,13 @@
 
 class Lot{
 private:
-    static int NUM;
+    static int NUM; //number of created lot
 public:
     int lotNum;
     int pcs;
     int time; //duaration time from starting DB
-    string current;
-    string next;
+    string current; //name of current process
+    string next; //name of next process
     bool nowProcess;
 
 public:
@@ -21,14 +21,16 @@ public:
 int Lot::NUM = 0;
 
 Lot::Lot(){
-    NUM++;
+    NUM++; //change from 0-index to 1-index for products
     lotNum = NUM;
     pcs = (lotNum % 4 != 0) ? 8960 : 1440;
+    time = 0;
     current = "Wafer";
     next = "DB";
     nowProcess = false;
 }
 
+//show lot state
 void Lot::showData(){
     cout << "No." << lotNum << "\t" << pcs << "\t";
     cout << current << "\t" << next << "\t";
@@ -37,14 +39,13 @@ void Lot::showData(){
 
 class Process{
 public:
-    string name;
-    string nextName;
-    int processTime;
+    string name; //name of this process
+    string nextName; //name of next process
+    int processTime; //time for lot end
     bool isUsed;
-    int currentLot;
-    int time;
-    int index;
-    int cnt;
+    int time; //time from lot start
+    int index; //index for current lot (-1 stands for error)
+    int cnt; // count of producted lot
 
 public:
     Process(string _name, string nextName, int _processTime); //constructor
@@ -59,20 +60,19 @@ Process::Process(string _name, string _nextName, int _processTime){
     nextName = _nextName;
     processTime = _processTime;
     isUsed = false;
-    currentLot = 0;
     time = 0;
     index = -1;
     cnt = 0;
 }
 
 int Process::searchLot(vector<Lot> &product){
-    for (int i = 0; i < N; i++){
-        if (product[i].next == name){
-            return i;
+    for (int index = 0; index < N; index++){
+        if (product[index].next == name){
+            return index;
         }
     }
 
-    return -1;
+    return -1; //lot is not found
 }
 
 void Process::lotStart(vector<Lot> &product){
@@ -84,7 +84,7 @@ void Process::lotStart(vector<Lot> &product){
     }
     else{
         cout << endl;
-        cout << "No." << product[index].lotNum << " " << name << "  start" << endl;
+        cout << "No." << product[index].lotNum << " " << name << "  start." << endl;
         product[index].current = name;
         product[index].next = nextName;
         product[index].nowProcess = true;
@@ -95,7 +95,7 @@ void Process::lotStart(vector<Lot> &product){
 
 void Process::lotEnd(vector<Lot> &product){
     cout << endl;
-    cout << "No." << product[index].lotNum << " " << name << "  end" << endl;
+    cout << "No." << product[index].lotNum << " " << name << "  end." << endl;
     product[index].current = "None";
     product[index].nowProcess = false;
     isUsed = false;
