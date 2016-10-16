@@ -46,10 +46,13 @@ public:
     bool isUsed;
     int currentLot;
     int time;
+    int index;
+    int cnt;
 
 public:
     Process(string _name, int _processTime); //constructor
-    void lotStart();
+    int searchLot(vector<Lot> &product);
+    void lotStart(vector<Lot> &product);
     void lotEnd();
     void update();
 };
@@ -60,14 +63,24 @@ Process::Process(string _name, int _processTime){
     isUsed = false;
     currentLot = 0;
     time = 0;
+    index = -1;
+    cnt = 0;
 }
 
-int searchLot(vector<Lot> &lots, Process prc){
+int Process::searchLot(vector<Lot> &product){
     for (int i = 0; i < N; i++){
-        if (lots[i].next == prc.name){
+        if (product[i].next == name){
             return i;
         }
     }
 
     return -1;
+}
+
+void Process::lotStart(vector<Lot> &product){
+    index = searchLot(product);
+    if (index < 0){
+        cerr << "next " << name << " lot is not found" << endl;
+    }
+
 }
