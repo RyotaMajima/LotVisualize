@@ -24,18 +24,19 @@ int main(){
         }
 
         if (DB.isUsed == false){
-            int index = 0;
-            for (int j = 0; j < N; j++){
-                if (lots[j].current == "None" && lots[j].next == "DB"){
-                    index = j;
-                    cout << "lot " << index << "\t" << "DB start." << endl;
-                    break;
-                }
-            }
+            DB.lotStart(lots);
+            //int index = 0;
+            //for (int j = 0; j < N; j++){
+            //    if (lots[j].current == "None" && lots[j].next == "DB"){
+            //        index = j;
+            //        cout << "lot " << index << "\t" << "DB start." << endl;
+            //        break;
+            //    }
+            //}
 
-            lots[index].current = "DB";
-            lots[index].nowProcess = true;
-            DB.isUsed = true;
+            //lots[index].current = "DB";
+            //lots[index].nowProcess = true;
+            //DB.isUsed = true;
         }
         else{
             for (int j = 0; j < N; j++){

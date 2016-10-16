@@ -85,6 +85,7 @@ void Process::lotStart(vector<Lot> &product){
         return;
     }
     else{
+        cout << "No. " << product[index].lotNum << " " << name << "  start" << endl;
         product[index].current = name;
         product[index].nowProcess = true;
         isUsed = true;
