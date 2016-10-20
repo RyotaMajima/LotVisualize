@@ -9,6 +9,6 @@
 
 using namespace std;
 
-const int T = 100;
+const int T = 70;
 const int timeStep = 5;
 const int N = 4;

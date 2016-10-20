@@ -47,6 +47,7 @@ public:
 
 public:
     Process(string _name, string _nextName, int _processTime); //constructor
+    void showStatus() const;
     int searchLot(vector<Lot> &product); //sesrching next lot
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
@@ -61,6 +62,11 @@ Process::Process(string _name, string _nextName, int _processTime){
     time = 0;
     index = -1;
     cnt = 0;
+}
+
+void Process::showStatus() const{
+    int lotNum = index;
+    cout << name << "\t" << boolalpha << isUsed << "\t" << ++lotNum << endl;
 }
 
 int Process::searchLot(vector<Lot> &product){

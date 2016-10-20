@@ -10,11 +10,19 @@ int main(){
         cout << "\t" << "pcs" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
 
-        //show lot state
+        //show lot status
         for (auto &lot : product){
             lot.showStatus();
         }
+        cout << endl;
 
+        cout << "name" << "\t" << "isUsed?" << "\t";
+        cout << "lot No." << endl;
+
+        //show process status
+        for (auto &prc : line){
+            prc.showStatus();
+        }
         cout << endl;
 
         for (int j = 0; j < (int)line.size(); j++){
