@@ -47,13 +47,14 @@ public:
     int cnt; // count of producted lot
 
 public:
-    Process(string _name, string nextName, int _processTime); //constructor
-    int searchLot(vector<Lot> &product);
+    Process(string _name, string _nextName, int _processTime); //constructor
+    int searchLot(vector<Lot> &product); //sesrching next lot
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
-    void update();
+    void update(); //update current lot
 };
 
+//constructor
 Process::Process(string _name, string _nextName, int _processTime){
     name = _name;
     nextName = _nextName;
@@ -71,6 +72,8 @@ int Process::searchLot(vector<Lot> &product){
         }
     }
 
+    cerr << "error! lot is not found." << endl;
+    
     return -1; //lot is not found
 }
 
