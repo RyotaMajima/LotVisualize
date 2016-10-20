@@ -12,7 +12,7 @@ int main(){
 
         //show lot state
         for (auto &lot : product){
-            lot.showData();
+            lot.showStatus();
         }
 
         if (DB.isUsed){

@@ -6,7 +6,7 @@ class Lot{
 private:
     static int NUM; //number of created lot
 public:
-    int lotNum;
+    int lotNum; //Lot No.
     int pcs;
     int time; //duaration time from starting DB
     string current; //name of current process
@@ -15,14 +15,13 @@ public:
 
 public:
     Lot(); //constructor
-    void showData(); //show lot state
+    void showStatus(); //show lot state
 };
 
 int Lot::NUM = 0;
 
 Lot::Lot(){
-    NUM++; //change from 0-index to 1-index for products
-    lotNum = NUM;
+    lotNum = ++NUM; //change from 0-index to 1-index for products
     pcs = (lotNum % 4 != 0) ? 8960 : 1440;
     time = 0;
     current = "Wafer";
@@ -31,7 +30,7 @@ Lot::Lot(){
 }
 
 //show lot state
-void Lot::showData(){
+void Lot::showStatus(){
     cout << "No." << lotNum << "\t" << pcs << "\t";
     cout << current << "\t" << next << "\t";
     cout << boolalpha << nowProcess << endl;
