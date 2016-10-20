@@ -15,7 +15,7 @@ public:
 
 public:
     Lot(); //constructor
-    void showStatus(); //show lot state
+    void showStatus() const; //show lot state
 };
 
 int Lot::NUM = 0;
@@ -30,7 +30,7 @@ Lot::Lot(){
 }
 
 //show lot state
-void Lot::showStatus(){
+void Lot::showStatus() const{
     cout << "No." << lotNum << "\t" << pcs << "\t";
     cout << current << "\t" << next << "\t";
     cout << boolalpha << nowProcess << endl;
