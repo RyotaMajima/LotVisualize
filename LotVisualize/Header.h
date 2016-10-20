@@ -50,7 +50,7 @@ public:
     int searchLot(vector<Lot> &product); //sesrching next lot
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
-    void update(); //update current lot
+    void update(); //update under processing lot
 };
 
 Process::Process(string _name, string _nextName, int _processTime){
