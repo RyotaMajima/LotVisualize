@@ -29,7 +29,6 @@ Lot::Lot(){
     nowProcess = false;
 }
 
-//show lot state
 void Lot::showStatus() const{
     cout << "No." << lotNum << "\t" << pcs << "\t";
     cout << current << "\t" << next << "\t";
@@ -54,7 +53,6 @@ public:
     void update(); //update current lot
 };
 
-//constructor
 Process::Process(string _name, string _nextName, int _processTime){
     name = _name;
     nextName = _nextName;
@@ -72,8 +70,6 @@ int Process::searchLot(vector<Lot> &product){
         }
     }
 
-    //cerr << "error! lot is not found." << endl;
-    
     return -1; //lot is not found
 }
 
