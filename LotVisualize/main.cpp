@@ -3,8 +3,10 @@
 
 int main(){
     vector<Lot> product(N);
-    Process DB("DB", "WB", 15);
+    //Process DB("DB", "WB", 15);
 
+    vector<Process> line{ { "DB", "WB", 10 }, {"WB", "CURE", 5} };
+    
     for (int i = 0; i < T; i += timeStep){
         cout << "T = " << i << endl; // time stamps
         cout << "\t" << "pcs" << "\t" << "current" << "\t";
@@ -15,14 +17,18 @@ int main(){
             lot.showStatus();
         }
 
-        if (DB.isUsed){
-            DB.update();
-            if (DB.time >= DB.processTime){
-                DB.lotEnd(product);
+        cout << endl;
+
+        for (int j = 0; j < (int)line.size(); j++){
+            if (line[j].isUsed){
+                line[j].update();
+                if (line[j].time >= line[j].processTime){
+                    line[j].lotEnd(product);
+                }
             }
-        }
-        else{
-            DB.lotStart(product);
+            else{
+                line[j].lotStart(product);
+            }
         }
 
         cout << endl << endl;

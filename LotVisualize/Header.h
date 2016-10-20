@@ -24,7 +24,7 @@ Lot::Lot(){
     lotNum = ++NUM; //change from 0-index to 1-index for products
     pcs = (lotNum % 4 != 0) ? 8960 : 1440;
     time = 0;
-    current = "Wafer";
+    current = "None";
     next = "DB";
     nowProcess = false;
 }
@@ -67,12 +67,12 @@ Process::Process(string _name, string _nextName, int _processTime){
 
 int Process::searchLot(vector<Lot> &product){
     for (int idx = 0; idx < N; idx++){
-        if (product[idx].next == name){
+        if (product[idx].nowProcess == false && product[idx].next == name){
             return idx;
         }
     }
 
-    cerr << "error! lot is not found." << endl;
+    //cerr << "error! lot is not found." << endl;
     
     return -1; //lot is not found
 }
@@ -85,8 +85,7 @@ void Process::lotStart(vector<Lot> &product){
         return;
     }
     else{
-        cout << endl;
-        cout << "No." << product[index].lotNum << " " << name << " start." << endl;
+        cout << "No." << product[index].lotNum << " " << name << " start" << endl;
         product[index].current = name;
         product[index].next = nextName;
         product[index].nowProcess = true;
@@ -96,9 +95,7 @@ void Process::lotStart(vector<Lot> &product){
 }
 
 void Process::lotEnd(vector<Lot> &product){
-    cout << endl;
-    cout << "No." << product[index].lotNum << " " << name << " end." << endl;
-    product[index].current = "None";
+    cout << "No." << product[index].lotNum << " " << name << " end" << endl;
     product[index].nowProcess = false;
     isUsed = false;
     time = 0;
