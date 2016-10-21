@@ -68,7 +68,13 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
 
 void Process::showStatus() const{
     int lotNum = index;
-    cout << name << "\t" << nextName << "\t" << boolalpha << isUsed << "\t" << ++lotNum << endl;
+    cout << name << "\t" << nextName << "\t" << boolalpha << isUsed << "\t";
+    if (lotNum < 0){
+        cout << "empty" << endl;
+    }
+    else{
+        cout << ++lotNum << endl;
+    }
 }
 
 int Process::searchLot(vector<Lot> &product){
