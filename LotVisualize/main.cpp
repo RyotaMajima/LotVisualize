@@ -8,9 +8,9 @@ int main(){
     vector<Process> test;
 
     int index = 0;
-    for (int i = 0; i < (int)NAME.size()-1; i++){
+    for (int i = 0; i < (int)INFO.size()-1; i++){
         index = i;
-        test.emplace_back(NAME[index], NAME[index++], 5);
+        test.emplace_back(get<0>(INFO[index]), get<0>(INFO[index++]), get<1>(INFO[index]));
     }
     
     for (int i = 0; i < T; i += timeStep){
