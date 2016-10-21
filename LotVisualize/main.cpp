@@ -12,6 +12,14 @@ int main(){
         index = i;
         line.emplace_back(get<0>(INFO[index]), get<0>(INFO[index+1]), get<1>(INFO[index]), get<2>(INFO[index]));
     }
+
+    vector<vector<Process>> test((int)INFO.size(), vector<Process>());
+
+    for (int i = 0; i < (int)test.size(); i++){
+        for (int j = 0; j < get<1>(INFO[i]); j++){
+            test[i].emplace_back(get<0>(INFO[index]), get<0>(INFO[index + 1]), j, get<2>(INFO[index]));
+        }
+    }
     
     for (int i = 0; i < T; i += timeStep){
         cout << "T = " << i << endl; // time stamps
