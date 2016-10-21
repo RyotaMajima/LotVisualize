@@ -68,7 +68,8 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
 
 void Process::showStatus() const{
     int lotNum = index;
-    cout << name << "\t" << nextName << "\t" << boolalpha << isUsed << "\t";
+    cout << name << "\t" << machineNo << "\t" << nextName << "\t";
+    cout << boolalpha << isUsed << "\t";
     if (lotNum < 0){
         cout << "empty" << endl;
     }
