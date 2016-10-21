@@ -5,10 +5,10 @@ int main(){
     vector<Lot> product(N);
     vector<Process> line{
         { "DB", "CURE", 1, 15 },
-        {"DB", "CURE", 2, 15},
-        {"CURE", "WB", 1, 50},
+        { "DB", "CURE", 2, 15 },
+        { "CURE", "WB", 1, 50 },
         { "WB", "RESIN", 1, 10 },
-        {"RESIN", "MOLD", 1, 20} };
+        { "RESIN", "MOLD", 1, 20 } };
     
     for (int i = 0; i < T; i += timeStep){
         cout << "T = " << i << endl; // time stamps
