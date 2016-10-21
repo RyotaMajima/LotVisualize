@@ -12,3 +12,5 @@ using namespace std;
 const int T = 70;
 const int timeStep = 5;
 const int N = 4;
+
+const vector<string> NAME{ "DB", "CURE", "WB", "RESIN", "CURE"};
