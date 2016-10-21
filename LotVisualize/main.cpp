@@ -3,14 +3,14 @@
 
 int main(){
     vector<Lot> product(N);
-    vector<Process> line{ { "DB", "WB", 15 }, { "WB", "RESIN", 10 }, {"RESIN", "MOLD", 20} };
+    //vector<Process> line{ { "DB", "WB", 15 }, { "WB", "RESIN", 10 }, {"RESIN", "MOLD", 20} };
 
-    vector<Process> test;
+    vector<Process> line;
 
     int index = 0;
     for (int i = 0; i < (int)INFO.size()-1; i++){
         index = i;
-        test.emplace_back(get<0>(INFO[index]), get<0>(INFO[index++]), get<1>(INFO[index]));
+        line.emplace_back(get<0>(INFO[index]), get<0>(INFO[index+1]), get<1>(INFO[index]), get<2>(INFO[index]));
     }
     
     for (int i = 0; i < T; i += timeStep){
@@ -24,7 +24,7 @@ int main(){
         }
         cout << endl;
 
-        cout << "name" << "\t" << "isUsed?" << "\t";
+        cout << "name" << "\t" << "next" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
 
         //show process status

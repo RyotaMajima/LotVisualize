@@ -14,7 +14,7 @@ const int T = 70;
 const int timeStep = 5;
 const int N = 4;
 
-const vector<tuple<string, int>> INFO{
-        make_tuple("DB", 15), make_tuple("CURE", 30),
-        make_tuple( "WB", 10), make_tuple("RESIN", 50),
-        make_tuple("CURE", 45) };
+const vector<tuple<string, int, int>> INFO{
+        make_tuple("DB", 2, 15), make_tuple("CURE", 1, 30),
+        make_tuple( "WB", 2, 10), make_tuple("RESIN", 4, 50),
+        make_tuple("CURE", 1, 45) };
