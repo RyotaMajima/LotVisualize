@@ -4,6 +4,14 @@
 int main(){
     vector<Lot> product(N);
     vector<Process> line{ { "DB", "WB", 15 }, { "WB", "RESIN", 10 }, {"RESIN", "MOLD", 20} };
+
+    vector<Process> test;
+
+    int index = 0;
+    for (int i = 0; i < (int)NAME.size()-1; i++){
+        index = i;
+        test.emplace_back(NAME[index], NAME[index++], 5);
+    }
     
     for (int i = 0; i < T; i += timeStep){
         cout << "T = " << i << endl; // time stamps
