@@ -5,10 +5,10 @@ int Lot::NUM = 0;
 Lot::Lot(){
     lotNum = ++NUM; //change from 0-index to 1-index for products
     qty = (lotNum % 4 != 0) ? 8960 : 1440; //quantity of this lot
-    leadTime = 0;
     current = "None";
     next = "DB";
     nowProcess = false;
+    leadTime = 0;
     Process::inProcess[0].second++;
 }
 
