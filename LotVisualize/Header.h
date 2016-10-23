@@ -35,7 +35,7 @@ public:
     Process(string _name, string _nextName, int _machineNo, int _processTime); //constructor
     void showStatus() const;
     int searchLot(vector<Lot> &product); //sesrching next lot
-    bool isAvailable();
+    bool hasNext();
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot

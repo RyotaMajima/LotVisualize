@@ -47,16 +47,9 @@ void Process::showStatus() const{
     }
 }
 
-bool Process::isAvailable(){
+bool Process::hasNext(){
     int idx = getInProcessIndex(name);
-    //if (isUsed == false && inProcess[idx].second > 0){
-    //    return true;
-    //}
-    //else{
-    //    return false;
-    //}
-    return !isUsed;
-    //return !isUsed && (inProcess.at(idx).second > 0);
+    return inProcess[idx].second > 0;
 }
 
 int Process::searchLot(vector<Lot> &product){

@@ -40,8 +40,10 @@ int main(){
         cout << "--------------------------------------" << endl << endl;
 
         for (auto &prc : line){
-            if (prc.isAvailable()){
-                prc.lotStart(product);
+            if (!prc.isUsed){
+                if (prc.hasNext()){
+                    prc.lotStart(product);
+                }
             }
             else{
                 prc.update();
