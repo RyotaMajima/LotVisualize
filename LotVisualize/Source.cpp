@@ -85,6 +85,12 @@ void Process::lotEnd(vector<Lot> &product){
     isUsed = false;
     time = 0;
     index = -1;
+    auto itr = find_if(inProcess.begin(), inProcess.end(),
+        [&](pair<string, int> &pair){ return pair.first == nextName; });
+    if (itr != inProcess.end()){
+        int dist = distance(inProcess.begin(), itr);
+        inProcess[dist].second++;
+    }
 }
 
 void Process::update(){

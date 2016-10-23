@@ -21,16 +21,17 @@ int main(){
         }
         cout << endl;
 
+        //show in-process status
+        cout << "-----in-progress status-----" << endl;
         for (auto &pair : Process::inProcess){
-            cout << pair.first << "\t" << pair.second << endl;
+            cout << pair.first << "\t\t" << pair.second << " lot" << endl;
         }
         cout << endl;
 
+        //show process status
         cout << "name" << "\t" << "M/C No." << "\t";
         cout << "next" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
-
-        //show process status
         for (auto &prc : line){
             prc.showStatus();
         }
