@@ -4,9 +4,9 @@
 int main(){
     vector<Lot> product(N);
     vector<Process> line{
-        { "DB", "CURE", 1, 15 },
-        { "DB", "CURE", 2, 15 },
-        { "CURE", "WB", 1, 50 },
+        { "DB", "DB_CURE", 1, 15 },
+        { "DB", "DB_CURE", 2, 15 },
+        { "DB_CURE", "WB", 1, 50 },
         { "WB", "RESIN", 1, 10 },
         { "RESIN", "MOLD", 1, 20 } };
     
@@ -18,6 +18,11 @@ int main(){
         //show lot status
         for (auto &lot : product){
             lot.showStatus();
+        }
+        cout << endl;
+
+        for (auto &pair : Process::inProcess){
+            cout << pair.first << "\t" << pair.second << endl;
         }
         cout << endl;
 

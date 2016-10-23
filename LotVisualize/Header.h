@@ -27,6 +27,7 @@ Lot::Lot(){
     current = "None";
     next = "DB";
     nowProcess = false;
+    Process::inProcess[0].second++;
 }
 
 void Lot::showStatus() const{
