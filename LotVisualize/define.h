@@ -4,7 +4,9 @@
 
 #include <iostream>
 #include <vector>
+#include <iterator>
 #include <utility>
+#include <algorithm>
 #include <string>
 #include <iomanip>
 

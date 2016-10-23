@@ -18,24 +18,6 @@ public:
     void showStatus() const; //show lot state
 };
 
-int Lot::NUM = 0;
-
-Lot::Lot(){
-    lotNum = ++NUM; //change from 0-index to 1-index for products
-    pcs = (lotNum % 4 != 0) ? 8960 : 1440;
-    leadTime = 0;
-    current = "None";
-    next = "DB";
-    nowProcess = false;
-    Process::inProcess[0].second++;
-}
-
-void Lot::showStatus() const{
-    cout << "No." << lotNum << "\t" << pcs << "\t";
-    cout << current << "\t" << next << "\t";
-    cout << boolalpha << nowProcess << endl;
-}
-
 class Process{
 public:
     static vector<pair<string, int>> inProcess;
@@ -57,6 +39,24 @@ public:
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot
 };
+
+int Lot::NUM = 0;
+
+Lot::Lot(){
+    lotNum = ++NUM; //change from 0-index to 1-index for products
+    pcs = (lotNum % 4 != 0) ? 8960 : 1440;
+    leadTime = 0;
+    current = "None";
+    next = "DB";
+    nowProcess = false;
+    Process::inProcess[0].second++;
+}
+
+void Lot::showStatus() const{
+    cout << "No." << lotNum << "\t" << pcs << "\t";
+    cout << current << "\t" << next << "\t";
+    cout << boolalpha << nowProcess << endl;
+}
 
 vector<pair<string, int>> Process::inProcess{
     make_pair("DB", 0), make_pair("DB_CURE", 0),
@@ -110,6 +110,12 @@ void Process::lotStart(vector<Lot> &product){
         product[index].nowProcess = true;
         isUsed = true;
         cnt++;
+        auto itr = find_if(inProcess.begin(), inProcess.end(),
+            [&](pair<string, int> &pair){ return pair.first == name; });
+        if (itr != inProcess.end()){
+            int dist = distance(inProcess.begin(), itr);
+            inProcess[dist].second--;
+        }
     }
 }
 
