@@ -37,6 +37,8 @@ void Lot::showStatus() const{
 
 class Process{
 public:
+    static vector<pair<string, int>> inProcess;
+public:
     string name; //name of this process
     string nextName; //name of next process
     int machineNo;
@@ -53,6 +55,11 @@ public:
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot
+};
+
+vector<pair<string, int>> Process::inProcess{
+    make_pair("DB", 0), make_pair("DB_CURE", 0),
+    make_pair("WB", 0)
 };
 
 Process::Process(string _name, string _nextName, int _machineNo, int _processTime){
