@@ -11,31 +11,33 @@ int main(){
         { "RESIN", "MOLD", 1, 20 } };
     
     for (int i = 0; i < T; i += timeStep){
-        cout << "T = " << i << endl; // time stamps
-        cout << "\t" << "pcs" << "\t" << "current" << "\t";
-        cout << "next" << "\t" << "now?" << endl;
+        cout << "T = " << i << endl << endl; // time stamps
 
         //show lot status
+        cout << "---------- All Lots Status ----------" << endl;
+        cout << "\t" << "qty" << "\t" << "curt" << "\t";
+        cout << "next" << "\t" << "now?" << endl;
         for (auto &lot : product){
             lot.showStatus();
         }
-        cout << endl;
+        cout << "-------------------------------------" << endl << endl;
 
         //show in-process status
-        cout << "-----in-progress status-----" << endl;
+        cout << "--- in-Progress Status ---" << endl;
         for (auto &pair : Process::inProcess){
             cout << pair.first << "\t\t" << pair.second << " lot" << endl;
         }
-        cout << endl;
+        cout << "--------------------------" << endl << endl;
 
         //show process status
-        cout << "name" << "\t" << "M/C No." << "\t";
+        cout << "---------- Process Status ------------" << endl;
+        cout << "name" << "\t" << "No." << "\t";
         cout << "next" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
         for (auto &prc : line){
             prc.showStatus();
         }
-        cout << endl;
+        cout << "--------------------------------------" << endl << endl;
 
         for (auto &prc : line){
             if (prc.isUsed){
