@@ -8,7 +8,7 @@ private:
 public:
     int lotNum; //Lot No.
     int pcs;
-    int time; //duaration time from starting DB
+    int leadTime; //duaration time from starting DB
     string current; //name of current process
     string next; //name of next process
     bool nowProcess;
@@ -23,7 +23,7 @@ int Lot::NUM = 0;
 Lot::Lot(){
     lotNum = ++NUM; //change from 0-index to 1-index for products
     pcs = (lotNum % 4 != 0) ? 8960 : 1440;
-    time = 0;
+    leadTime = 0;
     current = "None";
     next = "DB";
     nowProcess = false;
