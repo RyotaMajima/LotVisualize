@@ -40,14 +40,14 @@ int main(){
         cout << "--------------------------------------" << endl << endl;
 
         for (auto &prc : line){
-            if (prc.isUsed){
+            if (prc.isAvailable()){
+                prc.lotStart(product);
+            }
+            else{
                 prc.update();
                 if (prc.time >= prc.processTime){
                     prc.lotEnd(product);
                 }
-            }
-            else{
-                prc.lotStart(product);
             }
         }
 

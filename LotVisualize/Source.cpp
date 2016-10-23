@@ -47,6 +47,10 @@ void Process::showStatus() const{
     }
 }
 
+bool Process::isAvailable(){
+    return !isUsed;
+}
+
 int Process::searchLot(vector<Lot> &product){
     auto itr = find_if(product.begin(), product.end(),
         [&](Lot &lot){return lot.nowProcess == false && lot.next == name; });
