@@ -4,7 +4,7 @@ int Lot::NUM = 0;
 
 Lot::Lot(){
     lotNum = ++NUM; //change from 0-index to 1-index for products
-    pcs = (lotNum % 4 != 0) ? 8960 : 1440;
+    qty = (lotNum % 4 != 0) ? 8960 : 1440; //quantity of this lot
     leadTime = 0;
     current = "None";
     next = "DB";
@@ -13,7 +13,7 @@ Lot::Lot(){
 }
 
 void Lot::showStatus() const{
-    cout << "No." << lotNum << "\t" << pcs << "\t";
+    cout << "No." << lotNum << "\t" << qty << "\t";
     cout << current << "\t" << next << "\t";
     cout << boolalpha << nowProcess << endl;
 }

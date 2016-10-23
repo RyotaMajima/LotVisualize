@@ -7,7 +7,7 @@ private:
     static int NUM; //number of created lot
 public:
     int lotNum; //Lot No.
-    int pcs;
+    int qty;
     int leadTime; //duaration time from starting DB
     string current; //name of current process
     string next; //name of next process
