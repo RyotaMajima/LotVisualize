@@ -31,15 +31,15 @@ int main(){
         }
         cout << endl;
 
-        for (int j = 0; j < (int)line.size(); j++){
-            if (line[j].isUsed){
-                line[j].update();
-                if (line[j].time >= line[j].processTime){
-                    line[j].lotEnd(product);
+        for (auto &prc : line){
+            if (prc.isUsed){
+                prc.update();
+                if (prc.time >= prc.processTime){
+                    prc.lotEnd(product);
                 }
             }
             else{
-                line[j].lotStart(product);
+                prc.lotStart(product);
             }
         }
 
