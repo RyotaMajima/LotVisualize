@@ -48,13 +48,14 @@ void Process::showStatus() const{
 }
 
 int Process::searchLot(vector<Lot> &product){
-    for (int idx = 0; idx < (int)product.size(); idx++){
-        if (product[idx].nowProcess == false && product[idx].next == name){
-            return idx;
-        }
+    auto itr = find_if(product.begin(), product.end(),
+        [&](Lot &lot){return lot.nowProcess == false && lot.next == name; });
+    if (itr != product.end()){
+        return distance(product.begin(), itr);
     }
-
-    return -1; //lot is not found
+    else{
+        return -1; //lot is not found
+    }
 }
 
 int Process::getInProcessIndex(string str){
