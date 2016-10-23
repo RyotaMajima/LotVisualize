@@ -23,7 +23,7 @@ int main(){
         cout << "-------------------------------------" << endl << endl;
 
         //show in-process status
-        cout << "--- in-Progress Status ---" << endl;
+        cout << "--- in-Process Status ---" << endl;
         for (auto &pair : Process::inProcess){
             cout << pair.first << "\t\t" << pair.second << " lot" << endl;
         }
