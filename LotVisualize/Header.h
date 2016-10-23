@@ -38,4 +38,5 @@ public:
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot
+    int getInProcessIndex(string str);
 };

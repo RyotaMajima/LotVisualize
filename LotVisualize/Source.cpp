@@ -20,7 +20,8 @@ void Lot::showStatus() const{
 
 vector<pair<string, int>> Process::inProcess{
     make_pair("DB", 0), make_pair("DB_CURE", 0),
-    make_pair("WB", 0)
+    make_pair("WB", 0), make_pair("RESIN", 0),
+    make_pair("MOLD", 0)
 };
 
 Process::Process(string _name, string _nextName, int _machineNo, int _processTime){
@@ -47,13 +48,25 @@ void Process::showStatus() const{
 }
 
 int Process::searchLot(vector<Lot> &product){
-    for (int idx = 0; idx < N; idx++){
+    for (int idx = 0; idx < (int)product.size(); idx++){
         if (product[idx].nowProcess == false && product[idx].next == name){
             return idx;
         }
     }
 
     return -1; //lot is not found
+}
+
+int Process::getInProcessIndex(string str){
+    auto itr = find_if(inProcess.begin(), inProcess.end(),
+        [&](pair<string, int> &pair){ return pair.first == str; });
+    if (itr != inProcess.end()){
+        return distance(inProcess.begin(), itr);
+    }
+    else{
+        cerr << "Process " << str << " is not found" << endl;
+        return -1;
+    }
 }
 
 void Process::lotStart(vector<Lot> &product){
@@ -70,12 +83,8 @@ void Process::lotStart(vector<Lot> &product){
         product[index].nowProcess = true;
         isUsed = true;
         cnt++;
-        auto itr = find_if(inProcess.begin(), inProcess.end(),
-            [&](pair<string, int> &pair){ return pair.first == name; });
-        if (itr != inProcess.end()){
-            int dist = distance(inProcess.begin(), itr);
-            inProcess[dist].second--;
-        }
+        int idx = getInProcessIndex(name);
+        inProcess[idx].second--;
     }
 }
 
@@ -85,12 +94,8 @@ void Process::lotEnd(vector<Lot> &product){
     isUsed = false;
     time = 0;
     index = -1;
-    auto itr = find_if(inProcess.begin(), inProcess.end(),
-        [&](pair<string, int> &pair){ return pair.first == nextName; });
-    if (itr != inProcess.end()){
-        int dist = distance(inProcess.begin(), itr);
-        inProcess[dist].second++;
-    }
+    int idx = getInProcessIndex(nextName);
+    inProcess[idx].second++;
 }
 
 void Process::update(){

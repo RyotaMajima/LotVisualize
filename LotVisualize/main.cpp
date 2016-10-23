@@ -4,9 +4,9 @@
 int main(){
     vector<Lot> product(N);
     vector<Process> line{
-        { "DB", "DB_CURE", 1, 15 },
-        { "DB", "DB_CURE", 2, 15 },
-        { "DB_CURE", "WB", 1, 50 },
+        { "DB", "DB_CURE", 1, 5 },
+        { "DB", "DB_CURE", 2, 10 },
+        { "DB_CURE", "WB", 1, 15 },
         { "WB", "RESIN", 1, 10 },
         { "RESIN", "MOLD", 1, 20 } };
     
