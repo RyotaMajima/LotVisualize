@@ -25,11 +25,13 @@ vector<pair<string, int>> Process::inProcess{
     make_pair("MOLD", 0)
 };
 
-Process::Process(string _name, string _nextName, int _machineNo, int _processTime){
+Process::Process(string _name, string _nextName, int _machineNo, int _processTime, double _pos_x, double _pos_y){
     name = _name;
     nextName = _nextName;
     machineNo = _machineNo;
     processTime = _processTime;
+    pos_x = _pos_x;
+    pos_y = _pos_y;
     isUsed = false;
     time = 0;
     curtNo = 0;

@@ -3,11 +3,11 @@
 
 int main(){
     vector<Process> line{
-        { "DB", "DB_CURE", 1, 5 },
-        { "DB", "DB_CURE", 2, 10 },
-        { "DB_CURE", "WB", 1, 15 },
-        { "WB", "RESIN", 1, 10 },
-        { "RESIN", "MOLD", 1, 20 }
+        { "DB", "DB_CURE", 1, 5, 1.0, 11.0 },
+        { "DB", "DB_CURE", 2, 10, 1.0, 8.0 },
+        { "DB_CURE", "WB", 1, 15, 11.0, 6.0 },
+        { "WB", "RESIN", 1, 10 , 1.0, 4.0 },
+        { "RESIN", "MOLD", 1, 20, -10.0, -5.0 }
     };
     vector<Lot> product(N);
     

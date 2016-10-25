@@ -35,7 +35,7 @@ private:
     double pos_x, pos_y;
 
 public:
-    Process(string _name, string _nextName, int _machineNo, int _processTime); //constructor
+    Process(string _name, string _nextName, int _machineNo, int _processTime, double _pos_x, double _pos_y); //constructor
     void showStatus() const; //show process status
     bool hasNext(); //return whether is there in-process lot
     int searchLot(vector<Lot> &product); //sesrching next lot
