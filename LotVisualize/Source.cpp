@@ -88,6 +88,7 @@ void Process::lotStart(vector<Lot> &product){
         product[curtNo].next = nextName;
         product[curtNo].nowProcess = true;
         isUsed = true;
+        time = 0;
         cnt++;
         int idx = getInProcessIndex(name);
         inProcess.at(idx).second--;
