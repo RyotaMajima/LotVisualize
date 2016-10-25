@@ -2,13 +2,14 @@
 #include "header.h"
 
 int main(){
-    vector<Lot> product(N);
     vector<Process> line{
         { "DB", "DB_CURE", 1, 5 },
         { "DB", "DB_CURE", 2, 10 },
         { "DB_CURE", "WB", 1, 15 },
         { "WB", "RESIN", 1, 10 },
-        { "RESIN", "MOLD", 1, 20 } };
+        { "RESIN", "MOLD", 1, 20 }
+    };
+    vector<Lot> product(N);
     
     for (int i = 0; i < T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps

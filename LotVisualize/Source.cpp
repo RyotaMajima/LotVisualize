@@ -1,15 +1,15 @@
 #include "Header.h"
 
-int Lot::NUM = 0;
+int Lot::NUM = 1;
 
 Lot::Lot(){
-    lotNum = ++NUM; //change from 0-index to 1-index for products
+    lotNum = NUM++;
     qty = (lotNum % 4 != 0) ? 8960 : 1440; //quantity of this lot
     current = "None";
     next = "DB";
     nowProcess = false;
     leadTime = 0;
-    Process::inProcess[0].second++;
+    Process::inProcess[0].second++; //in-Process of "DB" increment
 }
 
 void Lot::showStatus() const{
@@ -31,19 +31,19 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
     processTime = _processTime;
     isUsed = false;
     time = 0;
-    index = -1;
+    curtNo = 0;
     cnt = 0;
 }
 
 void Process::showStatus() const{
-    int lotNum = index;
+    //int lotNum = index;
     cout << name << "\t" << machineNo << "\t" << nextName << "\t";
     cout << boolalpha << isUsed << "\t";
-    if (lotNum < 0){
-        cout << "empty" << endl;
+    if (isUsed){
+        cout << curtNo << endl;
     }
     else{
-        cout << ++lotNum << endl;
+        cout << "empty" << endl;
     }
 }
 
@@ -76,17 +76,17 @@ int Process::getInProcessIndex(string str){
 }
 
 void Process::lotStart(vector<Lot> &product){
-    index = searchLot(product);
+    curtNo = searchLot(product);
 
-    if (index < 0){
+    if (curtNo < 0){
         cerr << "next " << name << " lot is not found" << endl;
         return;
     }
     else{
-        cout << "No." << product[index].lotNum << " " << name << " start" << endl;
-        product[index].current = name;
-        product[index].next = nextName;
-        product[index].nowProcess = true;
+        cout << "No." << product[curtNo].lotNum << " " << name << " start" << endl;
+        product[curtNo].current = name;
+        product[curtNo].next = nextName;
+        product[curtNo].nowProcess = true;
         isUsed = true;
         cnt++;
         int idx = getInProcessIndex(name);
@@ -95,11 +95,11 @@ void Process::lotStart(vector<Lot> &product){
 }
 
 void Process::lotEnd(vector<Lot> &product){
-    cout << "No." << product[index].lotNum << " " << name << " end" << endl;
-    product[index].nowProcess = false;
+    cout << "No." << product[curtNo].lotNum << " " << name << " end" << endl;
+    product[curtNo].nowProcess = false;
     isUsed = false;
     time = 0;
-    index = -1;
+    curtNo = 0;
     int idx = getInProcessIndex(nextName);
     inProcess.at(idx).second++;
 }

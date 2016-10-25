@@ -7,7 +7,7 @@ private:
     static int NUM; //number of created lot
 public:
     int lotNum; //Lot No.
-    int qty;
+    unsigned int qty;
     string current; //name of current process
     string next; //name of next process
     bool nowProcess;
@@ -28,7 +28,7 @@ public:
     int processTime; //time for lot end
     bool isUsed;
     int time; //time from lot start
-    int index; //index for current lot (-1 stands for error)
+    int curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot
 
 public:
