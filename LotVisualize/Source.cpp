@@ -111,6 +111,8 @@ void Process::update(){
     time += timeStep;
 }
 
-void Process::output(){
-
+void Process::output(ofstream &ofs){
+    if (isUsed){
+        ofs << pos_x << "\t" << pos_y << endl;
+    }
 }

@@ -10,9 +10,14 @@ int main(){
         { "RESIN", "MOLD", 1, 20, -10.0, -5.0 }
     };
     vector<Lot> product(N);
+
+    char filename[50];
+    ofstream ofs;
     
-    for (int i = 0; i < T; i += timeStep){
+    for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
+        sprintf(filename, "./output/output%03d.txt", i);
+        ofs.open(filename);
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
@@ -37,8 +42,10 @@ int main(){
         cout << "lot No." << endl;
         for (auto &prc : line){
             prc.showStatus();
+            prc.output(ofs);
         }
         cout << "--------------------------------------" << endl << endl;
+
 
         for (auto &prc : line){
             if (!prc.isUsed){
@@ -55,6 +62,7 @@ int main(){
         }
 
         cout << endl << endl;
+        ofs.close();
     }
 
     return 0;
