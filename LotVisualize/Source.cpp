@@ -4,7 +4,8 @@ int Lot::NUM = 1;
 
 Lot::Lot(){
     lotNum = NUM++;
-    qty = (lotNum % 4 != 0) ? 8960 : 1440; //quantity of this lot
+    extra = (lotNum % 4 == 0);
+    qty = extra ? 1440 : 8960; //quantity of this lot
     current = "None";
     next = "DB";
     nowProcess = false;

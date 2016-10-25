@@ -7,6 +7,7 @@ private:
     static int NUM; //number of created lot
 public:
     int lotNum; //Lot No.
+    bool extra; //extra flag
     unsigned int qty;
     string current; //name of current process
     string next; //name of next process
