@@ -108,3 +108,7 @@ void Process::lotEnd(vector<Lot> &product){
 void Process::update(){
     time += timeStep;
 }
+
+void Process::output(){
+
+}
