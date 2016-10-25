@@ -15,7 +15,7 @@ public:
 
 public:
     Lot(); //constructor
-    void showStatus() const; //show lot state
+    void showStatus() const; //show lot status
 };
 
 class Process{
@@ -33,9 +33,9 @@ public:
 
 public:
     Process(string _name, string _nextName, int _machineNo, int _processTime); //constructor
-    void showStatus() const;
+    void showStatus() const; //show process status
+    bool hasNext(); //return whether is there in-process lot
     int searchLot(vector<Lot> &product); //sesrching next lot
-    bool hasNext();
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot

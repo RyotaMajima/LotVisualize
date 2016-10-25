@@ -36,7 +36,6 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
 }
 
 void Process::showStatus() const{
-    //int lotNum = index;
     cout << name << "\t" << machineNo << "\t" << nextName << "\t";
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
@@ -71,7 +70,7 @@ int Process::getInProcessIndex(string str){
     }
     else{
         cerr << "Process " << str << " is not found" << endl;
-        return -1;
+        return -1; //process is not found
     }
 }
 
