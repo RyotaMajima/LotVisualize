@@ -25,6 +25,12 @@ vector<pair<string, int>> Process::inProcess{
     make_pair("MOLD", 0)
 };
 
+void Process::outputInProcess(ofstream &ofs){
+    for (auto &prc : inProcess){
+        ofs << prc.first << " = " << prc.second << endl;
+    }
+}
+
 Process::Process(string _name, string _nextName, int _machineNo, int _processTime, double _pos_x, double _pos_y){
     name = _name;
     nextName = _nextName;

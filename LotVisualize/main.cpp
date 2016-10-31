@@ -12,7 +12,13 @@ int main(){
     vector<Lot> product(N);
 
     char filename[50];
-    ofstream ofs;
+    ofstream ofs("drawParam.txt");
+    ofs << "T_END = " << T << endl;
+    ofs.close();
+
+    ofs.open("inProcess.txt");
+    Process::outputInProcess(ofs);
+    ofs.close();
     
     for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
