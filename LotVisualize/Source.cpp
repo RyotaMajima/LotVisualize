@@ -20,15 +20,15 @@ void Lot::showStatus() const{
 }
 
 vector<tuple<string, int, double, double>> Process::inProcess{
-    make_tuple("DB", 0, 0, 15), make_tuple("DB_CURE", 0, 10, 10),
-    make_tuple("WB", 0, 5, 0), make_tuple("RESIN", 0, -5, -5),
-    make_tuple("MOLD", 0, -10, -10)
+    make_tuple("DB", 0, -19, 18), make_tuple("DB_CURE", 0, 11, 15),
+    make_tuple("WB", 0, 5, 0), make_tuple("RESIN", 0, -15, 1),
+    make_tuple("RESIN_CURE", 0, -10, -10), make_tuple("PLASMA", 0, -10, 0)
 };
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
         for (int i = 0; i < get<1>(prc); i++){
-            ofs << get<2>(prc) + i + 1 << "\t" << get<3>(prc) << endl;
+            ofs << get<2>(prc) + (i * 2) << "\t" << get<3>(prc) << endl;
         }
         ofs << endl;
     }

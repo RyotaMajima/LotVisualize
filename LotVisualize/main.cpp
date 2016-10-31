@@ -3,17 +3,24 @@
 
 int main(){
     vector<Process> line{
-        { "DB", "DB_CURE", 1, 5, 1.0, 11.0 },
-        { "DB", "DB_CURE", 2, 10, 1.0, 8.0 },
-        { "DB_CURE", "WB", 1, 15, 11.0, 6.0 },
-        { "WB", "RESIN", 1, 10 , 1.0, 4.0 },
-        { "RESIN", "MOLD", 1, 20, -10.0, -5.0 }
+        { "DB", "DB_CURE", 1, 5, 1.0, 16.0 },
+        { "DB", "DB_CURE", 2, 10, 1.0, 13.0 },
+        { "DB_CURE", "WB", 1, 15, 16.0, 12.0 },
+        { "DB_CURE", "WB", 2, 15, 16.0, 9.0},
+        { "WB", "RESIN", 1, 10, 1.0, 9.0 },
+        { "WB", "RESIN", 2, 10, 1.0, 6.0 },
+        { "RESIN", "RESIN_CURE", 1, 20, 1.0, 1.0 },
+        { "RESIN", "RESIN_CURE", 2, 25, 4.0, 1.0 },
+        { "RESIN", "RESIN_CURE", 3, 25, 1.0, -3.0 },
+        { "RESIN", "RESIN_CURE", 4, 20, 4.0, -3.0 },
+        { "RESIN_CURE", "PLASMA", 1, 25, 0, -5 }
     };
     vector<Lot> product(N);
 
     char filename[50];
     ofstream ofs("drawParam.txt");
     ofs << "T_END = " << T << endl;
+    ofs << "timeStep = " << timeStep << endl;
     ofs.close();
 
     for (int i = 0; i <= T; i += timeStep){
