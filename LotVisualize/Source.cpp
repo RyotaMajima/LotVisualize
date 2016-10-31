@@ -99,6 +99,7 @@ void Process::lotStart(vector<Lot> &product){
         product[curtNo].next = nextName;
         product[curtNo].nowProcess = true;
         isUsed = true;
+        isExtra = product[curtNo].extra;
         time = 0;
         cnt++;
         int idx = getInProcessIndex(name);
@@ -122,6 +123,7 @@ void Process::update(){
 
 void Process::output(ofstream &ofs){
     if (isUsed){
-        ofs << pos_x << "\t" << pos_y << endl;
+        ofs << pos_x << "\t" << pos_y << "\t";
+        ofs << (isExtra ? 1 : 0) << endl;
     }
 }

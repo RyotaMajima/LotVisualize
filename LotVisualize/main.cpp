@@ -3,6 +3,7 @@
 
 int main(){
     vector<Process> line{
+        //{ name, nextName, MachineNo, pos_x, pos_y}
         { "DB", "DB_CURE", 1, 5, 1.0, 16.0 },
         { "DB", "DB_CURE", 2, 10, 1.0, 13.0 },
         { "DB_CURE", "WB", 1, 15, 16.0, 12.0 },
@@ -25,7 +26,6 @@ int main(){
 
     for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
-
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
