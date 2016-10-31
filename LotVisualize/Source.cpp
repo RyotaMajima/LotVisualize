@@ -22,7 +22,7 @@ void Lot::showStatus() const{
 vector<tuple<string, int, double, double>> Process::inProcess{
     make_tuple("DB", 0, -19, 18), make_tuple("DB_CURE", 0, 11, 15),
     make_tuple("WB", 0, 5, 0), make_tuple("RESIN", 0, -15, 1),
-    make_tuple("RESIN_CURE", 0, -10, -10), make_tuple("PLASMA", 0, -10, 0)
+    make_tuple("RESIN_CURE", 0, 10, -2), make_tuple("PLASMA", 0, -10, 0)
 };
 
 void Process::outputInProcess(ofstream &ofs){

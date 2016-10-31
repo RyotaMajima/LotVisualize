@@ -13,7 +13,7 @@ int main(){
         { "RESIN", "RESIN_CURE", 2, 25, 4.0, 1.0 },
         { "RESIN", "RESIN_CURE", 3, 25, 1.0, -3.0 },
         { "RESIN", "RESIN_CURE", 4, 20, 4.0, -3.0 },
-        { "RESIN_CURE", "PLASMA", 1, 25, 0, -5 }
+        { "RESIN_CURE", "PLASMA", 1, 25, 10, -8 }
     };
     vector<Lot> product(N);
 
