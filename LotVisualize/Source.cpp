@@ -27,7 +27,10 @@ vector<tuple<string, int, double, double>> Process::inProcess{
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
-        ofs << get<0>(prc) << " = " << get<1>(prc) << endl;
+        for (int i = 0; i < get<1>(prc); i++){
+            ofs << get<2>(prc) + i + 1 << "\t" << get<3>(prc) << endl;
+        }
+        ofs << endl;
     }
 }
 
