@@ -21,7 +21,7 @@ public:
 
 class Process{
 public:
-    static vector<pair<string, int>> inProcess;
+    static vector<tuple<string, int, double, double>> inProcess;
     static void outputInProcess(ofstream &ofs);
 public:
     string name; //name of this process

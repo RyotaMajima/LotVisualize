@@ -9,6 +9,7 @@
 #include <vector>
 #include <iterator>
 #include <utility>
+#include <tuple>
 #include <algorithm>
 
 using namespace std;

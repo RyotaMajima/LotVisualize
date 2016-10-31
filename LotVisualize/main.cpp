@@ -16,14 +16,9 @@ int main(){
     ofs << "T_END = " << T << endl;
     ofs.close();
 
-    ofs.open("inProcess.txt");
-    Process::outputInProcess(ofs);
-    ofs.close();
-    
     for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
-        sprintf(filename, "./output/output%03d.txt", i);
-        ofs.open(filename);
+
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
@@ -34,14 +29,23 @@ int main(){
         }
         cout << "-------------------------------------" << endl << endl;
 
-        //show in-process status
+        //show & output in-process status
+        sprintf(filename, "./output/inProcess%03d.txt", i);
+        ofs.open(filename);
+
         cout << "--- in-Process Status ---" << endl;
-        for (auto &pair : Process::inProcess){
-            cout << pair.first << "\t\t" << pair.second << " lot" << endl;
+        for (auto &prc : Process::inProcess){
+            cout << get<0>(prc) << "\t\t" << get<1>(prc) << " lot" << endl;
         }
         cout << "--------------------------" << endl << endl;
+        Process::outputInProcess(ofs);
+        ofs.close();
 
-        //show process status
+
+        //show & output process status
+        sprintf(filename, "./output/output%03d.txt", i);
+        ofs.open(filename);
+
         cout << "---------- Process Status ------------" << endl;
         cout << "name" << "\t" << "No." << "\t";
         cout << "next" << "\t" << "isUsed?" << "\t";
@@ -51,7 +55,7 @@ int main(){
             prc.output(ofs);
         }
         cout << "--------------------------------------" << endl << endl;
-
+        ofs.close();
 
         for (auto &prc : line){
             if (!prc.isUsed){
@@ -68,7 +72,6 @@ int main(){
         }
 
         cout << endl << endl;
-        ofs.close();
     }
 
     return 0;

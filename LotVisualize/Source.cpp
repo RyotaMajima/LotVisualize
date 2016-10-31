@@ -10,7 +10,7 @@ Lot::Lot(){
     next = "DB";
     nowProcess = false;
     leadTime = 0;
-    Process::inProcess[0].second++; //in-Process of "DB" increment
+    get<1>(Process::inProcess[0])++; //in-Process of "DB" increment
 }
 
 void Lot::showStatus() const{
@@ -19,15 +19,15 @@ void Lot::showStatus() const{
     cout << boolalpha << nowProcess << endl;
 }
 
-vector<pair<string, int>> Process::inProcess{
-    make_pair("DB", 0), make_pair("DB_CURE", 0),
-    make_pair("WB", 0), make_pair("RESIN", 0),
-    make_pair("MOLD", 0)
+vector<tuple<string, int, double, double>> Process::inProcess{
+    make_tuple("DB", 0, 0, 15), make_tuple("DB_CURE", 0, 10, 10),
+    make_tuple("WB", 0, 5, 0), make_tuple("RESIN", 0, -5, -5),
+    make_tuple("MOLD", 0, -10, -10)
 };
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
-        ofs << prc.first << " = " << prc.second << endl;
+        ofs << get<0>(prc) << " = " << get<1>(prc) << endl;
     }
 }
 
@@ -57,7 +57,7 @@ void Process::showStatus() const{
 
 bool Process::hasNext(){
     int idx = getInProcessIndex(name);
-    return inProcess[idx].second > 0;
+    return get<1>(inProcess[idx]) > 0;
 }
 
 int Process::searchLot(vector<Lot> &product){
@@ -73,7 +73,7 @@ int Process::searchLot(vector<Lot> &product){
 
 int Process::getInProcessIndex(string str){
     auto itr = find_if(inProcess.begin(), inProcess.end(),
-        [&](pair<string, int> &pair){ return pair.first == str; });
+        [=](tuple<string, int, double, double> &tuple){ return get<0>(tuple) == str; });
     if (itr != inProcess.end()){
         return distance(inProcess.begin(), itr);
     }
@@ -99,7 +99,7 @@ void Process::lotStart(vector<Lot> &product){
         time = 0;
         cnt++;
         int idx = getInProcessIndex(name);
-        inProcess.at(idx).second--;
+        get<1>(inProcess[idx])--;
     }
 }
 
@@ -110,7 +110,7 @@ void Process::lotEnd(vector<Lot> &product){
     time = 0;
     curtNo = 0;
     int idx = getInProcessIndex(nextName);
-    inProcess.at(idx).second++;
+    get<1>(inProcess[idx])++;
 }
 
 void Process::update(){
