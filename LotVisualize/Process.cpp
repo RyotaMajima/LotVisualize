@@ -1,23 +1,4 @@
-#include "Header.h"
-
-int Lot::NUM = 1;
-
-Lot::Lot(){
-    lotNum = NUM++;
-    extra = (lotNum % 4 == 0);
-    qty = extra ? 1440 : 8960; //quantity of this lot
-    current = "None";
-    next = "DB";
-    nowProcess = false;
-    leadTime = 0;
-    get<1>(Process::inProcess[0])++; //in-Process of "DB" increment
-}
-
-void Lot::showStatus() const{
-    cout << "No." << lotNum << "\t" << qty << "\t";
-    cout << current << "\t" << next << "\t";
-    cout << boolalpha << nowProcess << endl;
-}
+#include "header.h"
 
 vector<tuple<string, int, double, double>> Process::inProcess{
     make_tuple("DB", 0, -19, 18), make_tuple("DB_CURE", 0, 11, 15),
@@ -28,7 +9,7 @@ vector<tuple<string, int, double, double>> Process::inProcess{
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
         for (int i = 0; i < get<1>(prc); i++){
-            ofs << get<2>(prc) + (i * 2) << "\t" << get<3>(prc) << endl;
+            ofs << get<2>(prc) +(i * 2) << "\t" << get<3>(prc) << endl;
         }
         ofs << endl;
     }
