@@ -79,7 +79,7 @@ int main(){
         cout << "lot No." << endl;
         for (auto &prc : line){
             prc.showStatus();
-            prc.output(ofs);
+            prc.fileOutput(ofs);
         }
         cout << "--------------------------------------" << endl << endl;
         ofs.close();

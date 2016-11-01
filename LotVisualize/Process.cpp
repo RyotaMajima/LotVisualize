@@ -113,7 +113,7 @@ void Process::setPos(const Position &other){
     pos = other;
 }
 
-void Process::output(ofstream &ofs){
+void Process::fileOutput(ofstream &ofs){
     if (isUsed){
         pos.output(ofs);
         ofs << "\t" << (isExtra ? 1 : 0) << endl;

@@ -31,5 +31,5 @@ public:
     void setTag(const string _thisName, const string _nextName);
     const Tag& getTag() const;
     void setPos(const Position &other);
-    void output(ofstream &ofs);
+    void fileOutput(ofstream &ofs);
 };
