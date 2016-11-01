@@ -4,9 +4,10 @@ class Process{
 public:
     static vector<tuple<string, int, double, double>> inProcess;
     static void outputInProcess(ofstream &ofs);
+
 public:
-    string name; //name of this process
-    string nextName; //name of next process
+    //string name; //name of this process
+    //string nextName; //name of next process
     int machineNo;
     int processTime; //time for lot end
     bool isUsed;
@@ -20,7 +21,7 @@ private:
     Position pos;
 
 public:
-    Process(string _name, string _nextName, int _machineNo, int _processTime); //constructor
+    Process(Tag _tag, int _machineNo, int _processTime); //constructor
     void showStatus() const; //show process status
     bool hasNext(); //return whether is there in-process lot
     int searchLot(vector<Lot> &product); //searching next lot
