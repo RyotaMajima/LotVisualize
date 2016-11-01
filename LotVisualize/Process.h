@@ -29,6 +29,7 @@ public:
     void update(); //update under processing lot
     int getInProcessIndex(string str);
     void setTag(const string _thisName, const string _nextName);
+    const Tag& getTag() const;
     void setPos(const Position &other);
     void output(ofstream &ofs);
 };

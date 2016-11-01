@@ -10,3 +10,7 @@ Tag& Tag::operator=(const Tag& rhs){
     nextName = rhs.nextName;
     return *this;
 }
+
+string Tag::getThisName() const{
+    return thisName;
+}

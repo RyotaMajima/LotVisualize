@@ -29,6 +29,13 @@ int main(){
         line[i].setPos(ProcessPos[i]);
     }
 
+    vector<Process> test;
+    for (size_t i = 0; i < ProcessName.size(); i++){
+        for (int j = 0; j < NumOfMachine[i]; j++){
+            test.push_back(Process("a", "a", j + 1, 10));
+        }
+    }
+
     vector<Lot> product(N);
 
     char filename[50];

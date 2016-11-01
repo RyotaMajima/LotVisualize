@@ -6,7 +6,7 @@ Position::Position(double _x, double _y)
     :x(_x), y(_y){}
 
 void Position::output(ofstream &ofs) const{
-    ofs << x << "\t" << y << "\t";
+    ofs << x << "\t" << y;
 }
 
 Position& Position::operator=(const Position& rhs){

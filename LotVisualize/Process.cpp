@@ -27,7 +27,7 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
 }
 
 void Process::showStatus() const{
-    cout << name << "\t" << machineNo << "\t" << nextName << "\t";
+    cout << getTag().getThisName() << "\t" << machineNo << "\t" << nextName << "\t";
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
         cout << curtNo << endl;
@@ -105,6 +105,10 @@ void Process::setTag(const string _thisName, const string _nextName){
     tag = tmp;
 }
 
+const Tag& Process::getTag() const{
+    return tag;
+}
+
 void Process::setPos(const Position &other){
     pos = other;
 }
@@ -112,6 +116,6 @@ void Process::setPos(const Position &other){
 void Process::output(ofstream &ofs){
     if (isUsed){
         pos.output(ofs);
-        ofs << (isExtra ? 1 : 0) << endl;
+        ofs << "\t" << (isExtra ? 1 : 0) << endl;
     }
 }
