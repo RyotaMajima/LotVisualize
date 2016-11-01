@@ -19,7 +19,7 @@ const int timeStep = 1;
 const int N = 10;
 
 const vector<string> ProcessName{
-    "DB", "DB_CURE", "WB", "RESIN", "RESIN_CURE",
+    "DB", "DB_CURE", "WB", "RESIN", "R_CURE",
     "PLASMA", "MOLD", "MARK", "DICING", "DIC_CURE",
     "TPG"};
 

@@ -11,18 +11,18 @@ const vector<Position> ProcessPos{
 
 int main(){
     vector<Process> line{
-        //{ tag, MachineNo, processTime}
+        //{ tag, MachineNo, processTime }
         { Tag("DB", "DB_CURE"), 1, 5 },
         { Tag("DB", "DB_CURE"), 2, 10 },
         { Tag("DB_CURE", "WB"), 1, 15 },
         { Tag("DB_CURE", "WB"), 2, 15, },
         { Tag("WB", "RESIN"), 1, 10, },
         { Tag("WB", "RESIN"), 2, 10, },
-        { Tag("RESIN", "RESIN_CURE"), 1, 20 },
-        { Tag("RESIN", "RESIN_CURE"), 2, 25 },
-        { Tag("RESIN", "RESIN_CURE"), 3, 25 },
-        { Tag("RESIN", "RESIN_CURE"), 4, 20 },
-        { Tag("RESIN_CURE", "PLASMA"), 1, 258 }
+        { Tag("RESIN", "R_CURE"), 1, 20 },
+        { Tag("RESIN", "R_CURE"), 2, 25 },
+        { Tag("RESIN", "R_CURE"), 3, 25 },
+        { Tag("RESIN", "R_CURE"), 4, 20 },
+        { Tag("R_CURE", "PLASMA"), 1, 258 }
     };
 
     for (size_t i = 0; i < line.size(); i++){
@@ -42,8 +42,8 @@ int main(){
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
-        cout << "\t" << "qty" << "\t" << "current" << "\t\t";
-        cout << "next" << "\t\t" << "now?" << endl;
+        cout << "\t" << "qty" << "\t" << "current" << "\t";
+        cout << "next" << "\t" << "now?" << endl;
         for (auto &lot : product){
             lot.showStatus();
         }
