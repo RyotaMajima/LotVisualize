@@ -42,8 +42,8 @@ int main(){
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
-        cout << "\t" << "qty" << "\t" << "curt" << "\t";
-        cout << "next" << "\t" << "now?" << endl;
+        cout << "\t" << "qty" << "\t" << "current" << "\t\t";
+        cout << "next" << "\t\t" << "now?" << endl;
         for (auto &lot : product){
             lot.showStatus();
         }
