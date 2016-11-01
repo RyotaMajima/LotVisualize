@@ -100,6 +100,11 @@ void Process::update(){
     time += timeStep;
 }
 
+void Process::setTag(const string _thisName, const string _nextName){
+    Tag tmp(_thisName, _nextName);
+    tag = tmp;
+}
+
 void Process::setPos(const Position &other){
     pos = other;
 }

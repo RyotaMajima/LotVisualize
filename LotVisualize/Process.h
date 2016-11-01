@@ -16,6 +16,7 @@ public:
     int cnt; // count of producted lot
 
 private:
+    Tag tag;
     Position pos;
 
 public:
@@ -27,6 +28,7 @@ public:
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot
     int getInProcessIndex(string str);
+    void setTag(const string _thisName, const string _nextName);
     void setPos(const Position &other);
     void output(ofstream &ofs);
 };
