@@ -14,8 +14,11 @@ public:
     int time; //time from lot start
     int curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot
+    Position pos;
+
 private:
     double pos_x, pos_y;
+
 
 public:
     Process(string _name, string _nextName, int _machineNo, int _processTime, double _pos_x, double _pos_y); //constructor

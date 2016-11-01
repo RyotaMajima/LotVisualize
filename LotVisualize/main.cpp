@@ -2,7 +2,11 @@
 #include "header.h"
 
 const vector<Position> ProcessPos{
-    { 1.0, 16.0 }
+    { 1.0, 16.0 }, { 1.0, 13.0 },
+    { 16.0, 12.0 }, { 16.0, 9.0 },
+    { 1.0, 9.0 }, { 1.0, 6.0 },
+    { 1.0, 1.0 }, { 4.0, 1.0 }, { 1.0, -3.0 }, { 4.0, -3.0 },
+    { 10.0, -8.0 }
 };
 
 int main(){
@@ -21,12 +25,8 @@ int main(){
         { "RESIN_CURE", "PLASMA", 1, 25, 10, -8 }
     };
 
-    vector<Process> test;
-
-    for (size_t i = 0; i < NumOfMachine.size(); i++){
-        for (int j = 0; j < NumOfMachine[i]; j++){
-            test.push_back(Process("a", "a", j+1, 10, 1, 2));
-        }
+    for (size_t i = 0; i < line.size(); i++){
+        line[i].pos = ProcessPos[i];
     }
 
     vector<Lot> product(N);

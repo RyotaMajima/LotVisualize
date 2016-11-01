@@ -104,7 +104,8 @@ void Process::update(){
 
 void Process::output(ofstream &ofs){
     if (isUsed){
-        ofs << pos_x << "\t" << pos_y << "\t";
+        //ofs << pos_x << "\t" << pos_y << "\t";
+        pos.output(ofs);
         ofs << (isExtra ? 1 : 0) << endl;
     }
 }

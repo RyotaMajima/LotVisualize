@@ -1,10 +1,12 @@
 #include "header.h"
 
-Position::Position(double _x = 0.0, double _y = 0.0)
+Position::Position() = default;
+
+Position::Position(double _x, double _y)
     :x(_x), y(_y){}
 
 void Position::output(ofstream &ofs) const{
-    ofs << x << "\t" << y << endl;
+    ofs << x << "\t" << y << "\t";
 }
 
 Position& Position::operator=(const Position& rhs){
