@@ -5,6 +5,10 @@ Position::Position() = default;
 Position::Position(double _x, double _y)
     :x(_x), y(_y){}
 
+void Position::setPos(const Position &pos){
+
+}
+
 void Position::output(ofstream &ofs) const{
     ofs << x << "\t" << y << "\t";
 }
