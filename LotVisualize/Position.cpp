@@ -7,7 +7,7 @@ void Position::output(ofstream &ofs) const{
     ofs << x << "\t" << y << endl;
 }
 
-Position& Position::operator=(const Position &rhs){
+Position& Position::operator=(const Position& rhs){
     x = rhs.x;
     y = rhs.y;
 }
