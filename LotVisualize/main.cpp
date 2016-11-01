@@ -53,11 +53,11 @@ int main(){
         sprintf(filename, "./output/inProcess%03d.txt", i);
         ofs.open(filename);
 
-        cout << "--- in-Process Status ---" << endl;
+        cout << "---- in-Process Status ----" << endl;
         for (auto &prc : Process::inProcess){
             cout << get<0>(prc) << "\t\t" << get<1>(prc) << " lot" << endl;
         }
-        cout << "--------------------------" << endl << endl;
+        cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs);
         ofs.close();
 
