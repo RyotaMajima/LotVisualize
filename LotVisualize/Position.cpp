@@ -10,4 +10,5 @@ void Position::output(ofstream &ofs) const{
 Position& Position::operator=(const Position& rhs){
     x = rhs.x;
     y = rhs.y;
+    return *this;
 }

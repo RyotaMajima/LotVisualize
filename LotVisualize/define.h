@@ -14,9 +14,9 @@
 
 using namespace std;
 
-const int T = 100;
-const int timeStep = 1;
-const int N = 10;
+const int T = 10;
+const int timeStep = 2;
+const int N = 2;
 
 const vector<string> ProcessName{
     "DB", "DB_CURE", "WB", "RESIN", "RESIN_CURE",
@@ -24,3 +24,4 @@ const vector<string> ProcessName{
     "TPG"};
 const vector<int> NumOfMachine{
     2, 2, 2, 4, 4, 1, 2, 1, 2, 1, 2 };
+

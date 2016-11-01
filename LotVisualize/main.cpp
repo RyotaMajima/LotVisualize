@@ -1,6 +1,10 @@
 #include "define.h"
 #include "header.h"
 
+const vector<Position> ProcessPos{
+    { 1.0, 16.0 }
+};
+
 int main(){
     vector<Process> line{
         //{ name, nextName, MachineNo, pos_x, pos_y}
@@ -16,6 +20,15 @@ int main(){
         { "RESIN", "RESIN_CURE", 4, 20, 4.0, -3.0 },
         { "RESIN_CURE", "PLASMA", 1, 25, 10, -8 }
     };
+
+    vector<Process> test;
+
+    for (size_t i = 0; i < NumOfMachine.size(); i++){
+        for (int j = 0; j < NumOfMachine[i]; j++){
+            test.push_back(Process("a", "a", j+1, 10, 1, 2));
+        }
+    }
+
     vector<Lot> product(N);
 
     char filename[50];
