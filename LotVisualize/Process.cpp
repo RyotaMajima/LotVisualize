@@ -15,13 +15,11 @@ void Process::outputInProcess(ofstream &ofs){
     }
 }
 
-Process::Process(string _name, string _nextName, int _machineNo, int _processTime, double _pos_x, double _pos_y){
+Process::Process(string _name, string _nextName, int _machineNo, int _processTime){
     name = _name;
     nextName = _nextName;
     machineNo = _machineNo;
     processTime = _processTime;
-    pos_x = _pos_x;
-    pos_y = _pos_y;
     isUsed = false;
     time = 0;
     curtNo = 0;
@@ -108,7 +106,6 @@ void Process::setPos(const Position &other){
 
 void Process::output(ofstream &ofs){
     if (isUsed){
-        //ofs << pos_x << "\t" << pos_y << "\t";
         pos.output(ofs);
         ofs << (isExtra ? 1 : 0) << endl;
     }

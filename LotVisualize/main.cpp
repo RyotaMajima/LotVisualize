@@ -11,18 +11,18 @@ const vector<Position> ProcessPos{
 
 int main(){
     vector<Process> line{
-        //{ name, nextName, MachineNo, pos_x, pos_y}
-        { "DB", "DB_CURE", 1, 5, 1.0, 16.0 },
-        { "DB", "DB_CURE", 2, 10, 1.0, 13.0 },
-        { "DB_CURE", "WB", 1, 15, 16.0, 12.0 },
-        { "DB_CURE", "WB", 2, 15, 16.0, 9.0},
-        { "WB", "RESIN", 1, 10, 1.0, 9.0 },
-        { "WB", "RESIN", 2, 10, 1.0, 6.0 },
-        { "RESIN", "RESIN_CURE", 1, 20, 1.0, 1.0 },
-        { "RESIN", "RESIN_CURE", 2, 25, 4.0, 1.0 },
-        { "RESIN", "RESIN_CURE", 3, 25, 1.0, -3.0 },
-        { "RESIN", "RESIN_CURE", 4, 20, 4.0, -3.0 },
-        { "RESIN_CURE", "PLASMA", 1, 25, 10, -8 }
+        //{ name, nextName, MachineNo, processTime}
+        { "DB", "DB_CURE", 1, 5 },
+        { "DB", "DB_CURE", 2, 10 },
+        { "DB_CURE", "WB", 1, 15 },
+        { "DB_CURE", "WB", 2, 15, },
+        { "WB", "RESIN", 1, 10, },
+        { "WB", "RESIN", 2, 10, },
+        { "RESIN", "RESIN_CURE", 1, 20 },
+        { "RESIN", "RESIN_CURE", 2, 25 },
+        { "RESIN", "RESIN_CURE", 3, 25 },
+        { "RESIN", "RESIN_CURE", 4, 20 },
+        { "RESIN_CURE", "PLASMA", 1, 258 }
     };
 
     for (size_t i = 0; i < line.size(); i++){
