@@ -73,7 +73,7 @@ void Process::lotStart(vector<Lot> &product){
     }
     else{
         cout << "No." << product[curtNo].lotNum << " " << tag.getThisName() << " start" << endl;
-        product[curtNo].tag = Tag(tag.getThisName(), tag.getNextName());
+        product[curtNo].tag = tag;
         product[curtNo].nowProcess = true;
         isUsed = true;
         isExtra = product[curtNo].extra;
