@@ -6,8 +6,7 @@ Lot::Lot(){
     lotNum = NUM++;
     extra = (lotNum % 4 == 0);
     qty = extra ? 1440 : 8960; //quantity of this lot
-    current = "None";
-    next = "DB";
+    tag = Tag("None", "DB");
     nowProcess = false;
     leadTime = 0;
     get<1>(Process::inProcess[0])++; //in-Process of "DB" increment
@@ -15,6 +14,6 @@ Lot::Lot(){
 
 void Lot::showStatus() const{
     cout << "No." << lotNum << "\t" << qty << "\t";
-    cout << current << "\t" << next << "\t";
+    cout << tag.getThisName() << "\t" << tag.getNextName() << "\t";
     cout << boolalpha << nowProcess << endl;
 }

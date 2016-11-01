@@ -14,7 +14,7 @@
 
 using namespace std;
 
-const int T = 50;
+const int T = 40;
 const int timeStep = 1;
 const int N = 10;
 

@@ -43,7 +43,7 @@ bool Process::hasNext(){
 
 int Process::searchLot(vector<Lot> &product){
     auto itr = find_if(product.begin(), product.end(),
-        [&](Lot &lot){return lot.nowProcess == false && lot.next == tag.getThisName(); });
+        [&](Lot &lot){return lot.nowProcess == false && lot.tag.getNextName() == tag.getThisName(); });
     if (itr != product.end()){
         return distance(product.begin(), itr);
     }
@@ -73,8 +73,7 @@ void Process::lotStart(vector<Lot> &product){
     }
     else{
         cout << "No." << product[curtNo].lotNum << " " << tag.getThisName() << " start" << endl;
-        product[curtNo].current = tag.getThisName();
-        product[curtNo].next = tag.getNextName();
+        product[curtNo].tag = Tag(tag.getThisName(), tag.getNextName());
         product[curtNo].nowProcess = true;
         isUsed = true;
         isExtra = product[curtNo].extra;
