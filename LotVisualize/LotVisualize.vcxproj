@@ -84,6 +84,7 @@
     <ClInclude Include="define.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="Lot.h" />
+    <ClInclude Include="Position.h" />
     <ClInclude Include="Process.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
