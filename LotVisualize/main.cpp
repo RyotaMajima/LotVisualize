@@ -26,7 +26,7 @@ int main(){
     };
 
     for (size_t i = 0; i < line.size(); i++){
-        line[i].pos = ProcessPos[i];
+        line[i].setPos(ProcessPos[i]);
     }
 
     vector<Lot> product(N);
