@@ -14,9 +14,9 @@ public:
     int time; //time from lot start
     int curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot
+    Tag tag;
 
 private:
-    Tag tag;
     Position pos;
 
 public:
@@ -28,8 +28,6 @@ public:
     void lotEnd(vector<Lot> &product);
     void update(); //update under processing lot
     int getInProcessIndex(string str);
-    void setTag(const string _thisName, const string _nextName);
-    const Tag& getTag() const;
     void setPos(const Position &other);
     void fileOutput(ofstream &ofs);
 };

@@ -27,7 +27,7 @@ Process::Process(string _name, string _nextName, int _machineNo, int _processTim
 }
 
 void Process::showStatus() const{
-    cout << getTag().getThisName() << "\t" << machineNo << "\t" << nextName << "\t";
+    cout << tag.getThisName() << "\t" << machineNo << "\t" << nextName << "\t";
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
         cout << curtNo << endl;
@@ -98,15 +98,6 @@ void Process::lotEnd(vector<Lot> &product){
 
 void Process::update(){
     time += timeStep;
-}
-
-void Process::setTag(const string _thisName, const string _nextName){
-    Tag tmp(_thisName, _nextName);
-    tag = tmp;
-}
-
-const Tag& Process::getTag() const{
-    return tag;
 }
 
 void Process::setPos(const Position &other){
