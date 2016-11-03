@@ -29,4 +29,5 @@ public:
     int getInProcessIndex(string str);
     void setPos(const Position &other);
     void fileOutput(ofstream &ofs);
+    void writePos(vector<Lot> &product);
 };

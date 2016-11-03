@@ -108,3 +108,7 @@ void Process::fileOutput(ofstream &ofs){
         ofs << "\t" << (isExtra ? 1 : 0) << endl;
     }
 }
+
+void Process::writePos(vector<Lot> &product){
+    product[curtNo].pos = pos;
+}
