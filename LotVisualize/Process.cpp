@@ -20,6 +20,7 @@ Process::Process(Tag _tag, int _machineNo, int _processTime){
     machineNo = _machineNo;
     processTime = _processTime;
     isUsed = false;
+    isExtra = false;
     time = 0;
     curtNo = 0;
     cnt = 0;
@@ -76,7 +77,7 @@ void Process::lotStart(vector<Lot> &product){
         product[curtNo].tag = tag;
         product[curtNo].nowProcess = true;
         isUsed = true;
-        isExtra = product[curtNo].extra;
+        isExtra = product[curtNo].isExtra;
         time = 0;
         cnt++;
         int idx = getInProcessIndex(tag.getThisName());

@@ -4,8 +4,8 @@ int Lot::NUM = 1;
 
 Lot::Lot(){
     lotNum = NUM++;
-    extra = (lotNum % 4 == 0);
-    qty = extra ? 1440 : 8960; //quantity of this lot
+    isExtra = (lotNum % 4 == 0);
+    qty = isExtra ? 1440 : 8960; //quantity of this lot
     tag = Tag("None", "DB");
     nowProcess = false;
     leadTime = 0;
@@ -20,5 +20,5 @@ void Lot::showStatus() const{
 
 void Lot::fileOutput(ofstream &ofs){
     pos.output(ofs);
-    ofs << "\t" << (extra ? 1 : 0) << endl;
+    ofs << "\t" << (isExtra? 1 : 0) << endl;
 }
