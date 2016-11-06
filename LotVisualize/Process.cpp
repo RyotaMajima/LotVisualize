@@ -15,8 +15,8 @@ void Process::outputInProcess(ofstream &ofs){
     }
 }
 
-Process::Process(Tag _tag, int _machineNo, int _processTime, int _capacity){
-    tag = _tag;
+Process::Process(Tag _name, int _machineNo, int _processTime, int _capacity){
+    name = _name;
     machineNo = _machineNo;
     capacity = _capacity;
     processTime = _processTime;
@@ -28,7 +28,7 @@ Process::Process(Tag _tag, int _machineNo, int _processTime, int _capacity){
 }
 
 void Process::showStatus() const{
-    cout << tag.thisName << "\t" << machineNo << "\t" << tag.nextName << "\t" << capacity << "\t";
+    cout << name.thisName << "\t" << machineNo << "\t" << name.nextName << "\t" << capacity << "\t";
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
         for (auto &val : curtNo){
@@ -42,13 +42,13 @@ void Process::showStatus() const{
 }
 
 bool Process::hasInProcess(){
-    int idx = getInProcessIndex(tag.thisName);
+    int idx = getInProcessIndex(name.thisName);
     return get<1>(inProcess[idx]) >= capacity;
 }
 
 int Process::searchLot(vector<Lot> &product){
     auto itr = find_if(product.begin(), product.end(),
-        [&](Lot &lot){return lot.nowProcess == false && lot.tag.nextName == tag.thisName; });
+        [&](Lot &lot){return lot.nowProcess == false && lot.tag.nextName == name.thisName; });
     if (itr != product.end()){
         return distance(product.begin(), itr);
     }
@@ -74,18 +74,18 @@ void Process::lotStart(vector<Lot> &product){
         curtNo[i] = searchLot(product);
 
         if (curtNo[i] < 0){
-            cerr << "next " << tag.thisName << " lot is not found" << endl;
+            cerr << "next " << name.thisName << " lot is not found" << endl;
             return;
         }
         else{
-            cout << "No." << product[curtNo[i]].lotNum << " " << tag.thisName << " start" << endl;
-            product[curtNo[i]].tag = tag;
+            cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " start" << endl;
+            product[curtNo[i]].tag = name;
             product[curtNo[i]].nowProcess = true;
             isUsed = true;
             isExtra = product[curtNo[i]].isExtra;
             time = 0;
             cnt++;
-            int idx = getInProcessIndex(tag.thisName);
+            int idx = getInProcessIndex(name.thisName);
             get<1>(inProcess[idx])--;
         }
     }
@@ -93,12 +93,12 @@ void Process::lotStart(vector<Lot> &product){
 
 void Process::lotEnd(vector<Lot> &product){
     for (int i = 0; i < capacity; i++){
-        cout << "No." << product[curtNo[i]].lotNum << " " << tag.thisName << " end" << endl;
+        cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " end" << endl;
         product[curtNo[i]].nowProcess = false;
         isUsed = false;
         time = 0;
         curtNo[i] = 0;
-        int idx = getInProcessIndex(tag.nextName);
+        int idx = getInProcessIndex(name.nextName);
         get<1>(inProcess[idx])++;
     }
 }
