@@ -5,7 +5,7 @@ Position::Position() = default;
 Position::Position(double _x, double _y)
     :x(_x), y(_y){}
 
-void Position::output(ofstream &ofs) const{
+void Position::output(ofstream &ofs, int i) const{
     ofs << x << "\t" << y;
 }
 

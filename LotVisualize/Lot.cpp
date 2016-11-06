@@ -17,8 +17,3 @@ void Lot::showStatus() const{
     cout << tag.getThisName() << "\t" << tag.getNextName() << "\t";
     cout << boolalpha << nowProcess << endl;
 }
-
-void Lot::fileOutput(ofstream &ofs){
-    pos.output(ofs);
-    ofs << "\t" << (isExtra? 1 : 0) << endl;
-}

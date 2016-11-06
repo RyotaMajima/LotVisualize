@@ -16,14 +16,12 @@ public:
     //int curtNo; //index for current lot (-1 stands for error)
     vector<int> curtNo;
     int cnt; // count of producted lot
-
-private:
     Position pos;
 
 public:
     Process(Tag _tag, int _machineNo, int _processTime, int _capacity);
     void showStatus() const; //show process status
-    bool hasNext(); //return whether is there in-process lot
+    bool hasInProcess(); //return whether are there proper in-process lots
     int searchLot(vector<Lot> &product); //searching next lot
     int getInProcessIndex(string str);
     void lotStart(vector<Lot> &product);

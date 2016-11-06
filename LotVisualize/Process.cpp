@@ -23,7 +23,7 @@ Process::Process(Tag _tag, int _machineNo, int _processTime, int _capacity){
     isUsed = false;
     isExtra = false;
     time = 0;
-    curtNo.resize(capacity, -1);
+    curtNo.resize(capacity);
     cnt = 0;
 }
 
@@ -32,15 +32,16 @@ void Process::showStatus() const{
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
         for (auto &val : curtNo){
-            cout << "\t\t\t\t" << val << endl;
+            cout << val << " ";
         }
+        cout << endl;
     }
     else{
         cout << "empty" << endl;
     }
 }
 
-bool Process::hasNext(){
+bool Process::hasInProcess(){
     int idx = getInProcessIndex(tag.getThisName());
     return get<1>(inProcess[idx]) >= capacity;
 }
@@ -112,7 +113,7 @@ void Process::setPos(const Position &other){
 
 void Process::fileOutput(ofstream &ofs){
     if (isUsed){
-        pos.output(ofs);
+        pos.output(ofs, 1);
         ofs << "\t" << (isExtra ? 1 : 0) << endl;
     }
 }
