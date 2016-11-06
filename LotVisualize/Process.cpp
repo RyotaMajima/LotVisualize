@@ -18,6 +18,7 @@ void Process::outputInProcess(ofstream &ofs){
 Process::Process(Tag _tag, int _machineNo, int _processTime){
     tag = _tag;
     machineNo = _machineNo;
+    capacity = 1;
     processTime = _processTime;
     isUsed = false;
     isExtra = false;
@@ -27,7 +28,7 @@ Process::Process(Tag _tag, int _machineNo, int _processTime){
 }
 
 void Process::showStatus() const{
-    cout << tag.getThisName() << "\t" << machineNo << "\t" << tag.getNextName() << "\t";
+    cout << tag.getThisName() << "\t" << machineNo << "\t" << tag.getNextName() << "\t" << capacity << "\t";
     cout << boolalpha << isUsed << "\t";
     if (isUsed){
         cout << curtNo << endl;

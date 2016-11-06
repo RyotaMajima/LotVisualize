@@ -27,6 +27,9 @@ int main(){
 
     for (size_t i = 0; i < line.size(); i++){
         line[i].setPos(ProcessPos[i]);
+        if (line[i].tag.getThisName() == "DB_CURE" || line[i].tag.getThisName() == "R_CURE"){
+            line[i].capacity = 4;
+        }
     }
 
     vector<Lot> product(N);
@@ -68,7 +71,7 @@ int main(){
 
         cout << "---------- Process Status ------------" << endl;
         cout << "name" << "\t" << "No." << "\t";
-        cout << "next" << "\t" << "isUsed?" << "\t";
+        cout << "next" << "\t" << "capa" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
         for (auto &prc : line){
             prc.showStatus();

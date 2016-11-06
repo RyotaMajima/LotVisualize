@@ -8,6 +8,7 @@ public:
 public:
     Tag tag;
     int machineNo;
+    int capacity;
     int processTime; //time for lot end
     bool isUsed;
     bool isExtra;
