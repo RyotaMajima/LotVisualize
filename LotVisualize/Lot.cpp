@@ -14,6 +14,6 @@ Lot::Lot(){
 
 void Lot::showStatus() const{
     cout << "No." << lotNum << "\t" << qty << "\t";
-    cout << tag.getThisName() << "\t" << tag.getNextName() << "\t";
+    cout << tag.thisName << "\t" << tag.nextName << "\t";
     cout << boolalpha << nowProcess << endl;
 }
