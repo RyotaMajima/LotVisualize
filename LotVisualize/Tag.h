@@ -1,7 +1,7 @@
 #pragma once
 
 class Tag{
-private:
+public:
     string thisName;
     string nextName;
 
