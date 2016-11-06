@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <array>
 #include <iterator>
 #include <utility>
 #include <tuple>
@@ -15,7 +16,7 @@
 using namespace std;
 
 const int T = 10;
-const int timeStep = 1;
+const int timeStep = 2;
 const int N = 4;
 
 const vector<string> ProcessName{
