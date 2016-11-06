@@ -12,8 +12,8 @@ const vector<Position> ProcessPos{
 int main(){
     vector<Process> line{
         //{ tag, MachineNo, processTime }
-        { Tag("DB", "DB_CURE"), 1, 2, 1 },
-        { Tag("DB", "DB_CURE"), 2, 2, 1 },
+        { Tag("DB", "DB_CURE"), 1, 10, 1 },
+        { Tag("DB", "DB_CURE"), 2, 10, 1 },
         { Tag("DB_CURE", "WB"), 1, 15, 3 },
         { Tag("DB_CURE", "WB"), 2, 15, 3 },
         { Tag("WB", "RESIN"), 1, 10, 1 },
@@ -26,7 +26,7 @@ int main(){
     };
 
     for (size_t i = 0; i < line.size(); i++){
-        line[i].setPos(ProcessPos[i]);
+        line[i].pos = ProcessPos[i];
     }
 
     vector<Lot> product(N);
