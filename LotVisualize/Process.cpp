@@ -1,15 +1,15 @@
 #include "header.h"
 
-vector<tuple<string, int, double, double>> Process::inProcess{
-    make_tuple("DB", 0, -19, 18), make_tuple("DB_CURE", 0, 11, 15),
-    make_tuple("WB", 0, -15, 10), make_tuple("RESIN", 0, -15, 1),
-    make_tuple("R_CURE", 0, 10, -2), make_tuple("PLASMA", 0, -10, 0)
+vector<InProcess> Process::inProcess{
+    InProcess{ "DB", { -19, 18 } }, InProcess{ "DB_CURE", {11, 15} },
+    InProcess{ "WB", { -15, 10 } }, InProcess{ "RESIN", {-15, 1} },
+    InProcess{ "R_CURE", { 10, -2 } }, InProcess{ "PLASMA", {-10, 0} }
 };
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
-        for (int i = 0; i < get<1>(prc); i++){
-            ofs << get<2>(prc) + (i * 2) << "\t" << get<3>(prc) << endl;
+        for (int i = 0; i < prc.num; i++){
+            ofs << prc.pos.x + (i * 2) << "\t" << prc.pos.y << endl;
         }
         ofs << endl;
     }
@@ -43,7 +43,7 @@ void Process::showStatus() const{
 
 bool Process::hasInProcess(){
     int idx = getInProcessIndex(name.thisName);
-    return get<1>(inProcess[idx]) >= capacity;
+    return inProcess[idx].num >= capacity;
 }
 
 int Process::searchLot(vector<Lot> &product){
@@ -59,7 +59,7 @@ int Process::searchLot(vector<Lot> &product){
 
 int Process::getInProcessIndex(string str){
     auto itr = find_if(inProcess.begin(), inProcess.end(),
-        [=](tuple<string, int, double, double> &tuple){ return get<0>(tuple) == str; });
+        [=](InProcess &prc){ return prc.name == str; });
     if (itr != inProcess.end()){
         return distance(inProcess.begin(), itr);
     }
@@ -86,7 +86,7 @@ void Process::lotStart(vector<Lot> &product){
             time = 0;
             cnt++;
             int idx = getInProcessIndex(name.thisName);
-            get<1>(inProcess[idx])--;
+            (inProcess[idx].num)--;
         }
     }
 }
@@ -99,7 +99,7 @@ void Process::lotEnd(vector<Lot> &product){
         time = 0;
         curtNo[i] = 0;
         int idx = getInProcessIndex(name.nextName);
-        get<1>(inProcess[idx])++;
+        (inProcess[idx].num)++;
     }
 }
 

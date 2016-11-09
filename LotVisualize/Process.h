@@ -1,8 +1,9 @@
 #pragma once
+#include "InProcess.h"
 
 class Process{
 public:
-    static vector<tuple<string, int, double, double>> inProcess;
+    static vector<InProcess> inProcess;
     static void outputInProcess(ofstream &ofs);
 
 public:
@@ -13,8 +14,7 @@ public:
     bool isUsed;
     bool isExtra;
     int time; //time from lot start
-    //int curtNo; //index for current lot (-1 stands for error)
-    vector<int> curtNo;
+    vector<int> curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot
     Position pos;
 

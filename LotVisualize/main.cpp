@@ -9,9 +9,14 @@ const vector<Position> ProcessPos{
     { 10.0, -8.0 }
 };
 
+const vector<Position> InProcessPos{
+    { -19, 18 }, { 11, 15 }, { -15, 10 }, {-15, 1},
+    { 10, -2 }, {-10, 0}
+};
+
 int main(){
     vector<Process> line{
-        //{ tag, MachineNo, processTime }
+        //{ tag, MachineNo, processTime, capacity }
         { Tag("DB", "DB_CURE"), 1, 10, 1 },
         { Tag("DB", "DB_CURE"), 2, 10, 1 },
         { Tag("DB_CURE", "WB"), 1, 15, 3 },
@@ -55,7 +60,7 @@ int main(){
 
         cout << "---- in-Process Status ----" << endl;
         for (auto &prc : Process::inProcess){
-            cout << get<0>(prc) << "\t\t" << get<1>(prc) << " lot" << endl;
+            cout << prc.name << "\t\t" << prc.num << " lot" << endl;
         }
         cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs);
