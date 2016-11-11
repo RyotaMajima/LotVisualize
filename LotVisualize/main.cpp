@@ -55,7 +55,7 @@ int main(){
         cout << "-------------------------------------" << endl << endl;
 
         //show & output in-process status
-        sprintf(filename, "./output/inProcess%03d.txt", i);
+        sprintf(filename, "./res/inPrc%03d.txt", i);
         ofs.open(filename);
 
         cout << "---- in-Process Status ----" << endl;
@@ -68,7 +68,7 @@ int main(){
 
 
         //show & output process status
-        sprintf(filename, "./output/output%03d.txt", i);
+        sprintf(filename, "./res/prc%03d.txt", i);
         ofs.open(filename);
 
         cout << "---------- Process Status ------------" << endl;

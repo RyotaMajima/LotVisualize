@@ -15,8 +15,8 @@
 
 using namespace std;
 
-const int T = 40;
-const int timeStep = 2;
+const int T = 100;
+const int timeStep = 1;
 const int N = 4;
 
 const vector<string> ProcessName{
