@@ -2,7 +2,7 @@
 
 vector<InProcess> Process::inProcess{
     InProcess{ "DB", { -23, 21 } }, InProcess{ "DB_CURE", {-17, 5} },
-    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", { 1, 5 } },
+    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", { -2, 5 } },
     InProcess{ "R_CURE", { 11, 5 } }, InProcess{ "PLASMA", {5, -3} },
     InProcess{ "MOLD", {5, -10} }
 };
@@ -10,7 +10,7 @@ vector<InProcess> Process::inProcess{
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
         for (int i = 0; i < prc.num; i++){
-            ofs << prc.pos.x + (i * 1.2) << "\t" << prc.pos.y << endl;
+            ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << endl;
         }
         ofs << endl;
     }

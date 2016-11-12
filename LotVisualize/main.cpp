@@ -5,7 +5,7 @@ const vector<Position> ProcessPos{
     { -22.0, 14.0 }, { -22.0, 11.0 },
     { -17.0, 14.0 }, { -17.0, 11.0 },
     { -7.0, 14.0 }, { -7.0, 11.0 },
-    { 1.0, 14.0 }, { 1.0, 11.0 }, { 4.0, 14.0 }, { 4.0, 11.0 },
+    { -1.0, 14.0 }, { -1.0, 11.0 }, { 2.0, 14.0 }, { 2.0, 11.0 },
     { 12.0, 14.0 }, { 12.0, 11.0 }, { 18.0, 14.0 }, { 18.0, 11.0 },
     { 21, -3 }
 };
@@ -56,7 +56,7 @@ int main(){
         cout << "\t" << "qty" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
         for (auto &lot : product){
-            lot.showStatus();
+            //lot.showStatus();
         }
         cout << "-------------------------------------" << endl << endl;
 
@@ -66,7 +66,7 @@ int main(){
 
         cout << "---- in-Process Status ----" << endl;
         for (auto &prc : Process::inProcess){
-            cout << prc.name << "\t\t" << prc.num << " lot" << endl;
+            //cout << prc.name << "\t\t" << prc.num << " lot" << endl;
         }
         cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs);
@@ -82,7 +82,7 @@ int main(){
         cout << "next" << "\t" << "capa" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
         for (auto &prc : line){
-            prc.showStatus();
+            //prc.showStatus();
             prc.fileOutput(ofs);
         }
         cout << "--------------------------------------" << endl << endl;
