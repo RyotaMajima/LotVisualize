@@ -15,9 +15,9 @@
 
 using namespace std;
 
-const int T = 100;
+const int T = 150;
 const int timeStep = 1;
-const int N = 4;
+const int N = 12;
 
 const vector<string> ProcessName{
     "DB", "DB_CURE", "WB", "RESIN", "R_CURE",

@@ -1,15 +1,16 @@
 #include "header.h"
 
 vector<InProcess> Process::inProcess{
-    InProcess{ "DB", { -19, 18 } }, InProcess{ "DB_CURE", {11, 15} },
-    InProcess{ "WB", { -15, 10 } }, InProcess{ "RESIN", {-15, 1} },
-    InProcess{ "R_CURE", { 10, -2 } }, InProcess{ "PLASMA", {-10, 0} }
+    InProcess{ "DB", { -23, 21 } }, InProcess{ "DB_CURE", {-17, 5} },
+    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", {-15, 5} },
+    InProcess{ "R_CURE", { 11, 5 } }, InProcess{ "PLASMA", {5, -3} },
+    InProcess{ "MOLD", {5, -10} }
 };
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
         for (int i = 0; i < prc.num; i++){
-            ofs << prc.pos.x + (i * 2) << "\t" << prc.pos.y << endl;
+            ofs << prc.pos.x + (i * 1.2) << "\t" << prc.pos.y << endl;
         }
         ofs << endl;
     }
@@ -110,7 +111,7 @@ void Process::update(){
 void Process::fileOutput(ofstream &ofs){
     if (isUsed){
         for (int i = 0; i < capacity; i++){
-            ofs << pos.x + (i * 2) << "\t" << pos.y << "\t";
+            ofs << pos.x + (i * 1.2) << "\t" << pos.y << "\t";
             ofs << (isExtra ? 1 : 0) << endl;
         }
     }

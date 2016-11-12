@@ -2,32 +2,32 @@
 #include "header.h"
 
 const vector<Position> ProcessPos{
-    { 1.0, 16.0 }, { 1.0, 13.0 },
-    { 16.0, 12.0 }, { 16.0, 9.0 },
-    { 1.0, 9.0 }, { 1.0, 6.0 },
-    { 1.0, 1.0 }, { 4.0, 1.0 }, { 1.0, -3.0 }, { 4.0, -3.0 },
-    { 10.0, -8.0 }
-};
-
-const vector<Position> InProcessPos{
-    { -19, 18 }, { 11, 15 }, { -15, 10 }, {-15, 1},
-    { 10, -2 }, {-10, 0}
+    { -22.0, 14.0 }, { -22.0, 11.0 },
+    { -17.0, 14.0 }, { -17.0, 11.0 },
+    { -7.0, 14.0 }, { -7.0, 11.0 },
+    { 1.0, 14.0 }, { 1.0, 11.0 }, { 4.0, 14.0 }, { 4.0, 11.0 },
+    { 12.0, 14.0 }, { 12.0, 11.0 }, { 18.0, 14.0 }, { 18.0, 11.0 },
+    { 21, -3 }
 };
 
 int main(){
     vector<Process> line{
         //{ tag, MachineNo, processTime, capacity }
         { Tag("DB", "DB_CURE"), 1, 10, 1 },
-        { Tag("DB", "DB_CURE"), 2, 10, 1 },
+        { Tag("DB", "DB_CURE"), 2, 12, 1 },
         { Tag("DB_CURE", "WB"), 1, 15, 3 },
         { Tag("DB_CURE", "WB"), 2, 15, 3 },
-        { Tag("WB", "RESIN"), 1, 10, 1 },
-        { Tag("WB", "RESIN"), 2, 10, 1 },
+        { Tag("WB", "RESIN"), 1, 8, 1 },
+        { Tag("WB", "RESIN"), 2, 8, 1 },
         { Tag("RESIN", "R_CURE"), 1, 20, 1 },
-        { Tag("RESIN", "R_CURE"), 2, 25, 1 },
-        { Tag("RESIN", "R_CURE"), 3, 25, 1 },
+        { Tag("RESIN", "R_CURE"), 2, 20, 1 },
+        { Tag("RESIN", "R_CURE"), 3, 20, 1 },
         { Tag("RESIN", "R_CURE"), 4, 20, 1 },
-        { Tag("R_CURE", "PLASMA"), 1, 25, 4 }
+        { Tag("R_CURE", "PLASMA"), 1, 25, 4 },
+        { Tag("R_CURE", "PLASMA"), 2, 25, 4 },
+        { Tag("R_CURE", "PLASMA"), 3, 25, 4 },
+        { Tag("R_CURE", "PLASMA"), 4, 25, 4 },
+        { Tag("PLASMA", "MOLD"), 1, 5, 1 }
     };
 
     for (size_t i = 0; i < line.size(); i++){
@@ -44,6 +44,12 @@ int main(){
 
     for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
+
+        if (i % 100){
+            for (int j = 0; j < 4; j++){
+                product.push_back(Lot());
+            }
+        }
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
