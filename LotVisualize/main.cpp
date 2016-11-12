@@ -13,21 +13,21 @@ const vector<Position> ProcessPos{
 int main(){
     vector<Process> line{
         //{ tag, MachineNo, processTime, capacity }
-        { Tag("DB", "DB_CURE"), 1, 10, 1 },
-        { Tag("DB", "DB_CURE"), 2, 12, 1 },
+        { Tag("DB", "DB_CURE"), 1, 6, 1 },
+        { Tag("DB", "DB_CURE"), 2, 6, 1 },
         { Tag("DB_CURE", "WB"), 1, 15, 3 },
         { Tag("DB_CURE", "WB"), 2, 15, 3 },
-        { Tag("WB", "RESIN"), 1, 8, 1 },
-        { Tag("WB", "RESIN"), 2, 8, 1 },
-        { Tag("RESIN", "R_CURE"), 1, 20, 1 },
-        { Tag("RESIN", "R_CURE"), 2, 20, 1 },
-        { Tag("RESIN", "R_CURE"), 3, 20, 1 },
-        { Tag("RESIN", "R_CURE"), 4, 20, 1 },
+        { Tag("WB", "RESIN"), 1, 5, 1 },
+        { Tag("WB", "RESIN"), 2, 5, 1 },
+        { Tag("RESIN", "R_CURE"), 1, 30, 1 },
+        { Tag("RESIN", "R_CURE"), 2, 30, 1 },
+        { Tag("RESIN", "R_CURE"), 3, 30, 1 },
+        { Tag("RESIN", "R_CURE"), 4, 30, 1 },
         { Tag("R_CURE", "PLASMA"), 1, 25, 4 },
         { Tag("R_CURE", "PLASMA"), 2, 25, 4 },
         { Tag("R_CURE", "PLASMA"), 3, 25, 4 },
         { Tag("R_CURE", "PLASMA"), 4, 25, 4 },
-        { Tag("PLASMA", "MOLD"), 1, 5, 1 }
+        { Tag("PLASMA", "MOLD"), 1, 4, 1 }
     };
 
     for (size_t i = 0; i < line.size(); i++){
@@ -45,8 +45,8 @@ int main(){
     for (int i = 0; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
 
-        if (i % 100){
-            for (int j = 0; j < 4; j++){
+        if (i % 30 == 1){
+            for (int j = 0; j < 12; j++){
                 product.push_back(Lot());
             }
         }

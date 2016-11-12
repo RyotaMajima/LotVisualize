@@ -2,7 +2,7 @@
 
 vector<InProcess> Process::inProcess{
     InProcess{ "DB", { -23, 21 } }, InProcess{ "DB_CURE", {-17, 5} },
-    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", {-15, 5} },
+    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", { 1, 5 } },
     InProcess{ "R_CURE", { 11, 5 } }, InProcess{ "PLASMA", {5, -3} },
     InProcess{ "MOLD", {5, -10} }
 };
