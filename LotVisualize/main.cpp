@@ -7,7 +7,12 @@ const vector<Position> ProcessPos{
     { -7.0, 14.0 }, { -7.0, 11.0 },
     { -1.0, 14.0 }, { -1.0, 11.0 }, { 2.0, 14.0 }, { 2.0, 11.0 },
     { 12.0, 14.0 }, { 12.0, 11.0 }, { 18.0, 14.0 }, { 18.0, 11.0 },
-    { 21, -3 }
+    { 21, -3 },
+    { 21, -10 }, { 21, -13 },
+    { 11, -20 },
+    { -7, -20 }, { -4, -20 },
+    { -15, -20 }, { -15, -20 }, { -15, -20 }, { -15, -20 },
+    { -15, -20 }, { -15, -20 }, { -15, -20 }, { -15, -20 }
 };
 
 int main(){
@@ -23,11 +28,24 @@ int main(){
         { Tag("RESIN", "R_CURE"), 2, 30, 1 },
         { Tag("RESIN", "R_CURE"), 3, 30, 1 },
         { Tag("RESIN", "R_CURE"), 4, 30, 1 },
-        { Tag("R_CURE", "PLASMA"), 1, 25, 4 },
-        { Tag("R_CURE", "PLASMA"), 2, 25, 4 },
-        { Tag("R_CURE", "PLASMA"), 3, 25, 4 },
-        { Tag("R_CURE", "PLASMA"), 4, 25, 4 },
-        { Tag("PLASMA", "MOLD"), 1, 4, 1 }
+        { Tag("R_CURE", "PLASMA"), 1, 30, 4 },
+        { Tag("R_CURE", "PLASMA"), 2, 30, 4 },
+        { Tag("R_CURE", "PLASMA"), 3, 30, 4 },
+        { Tag("R_CURE", "PLASMA"), 4, 30, 4 },
+        { Tag("PLASMA", "MOLD"), 1, 4, 1 },
+        { Tag("MOLD", "MARK"), 1, 5, 1 },
+        { Tag("MOLD", "MARK"), 2, 6, 1 },
+        { Tag("MARK", "DICING"), 1, 3, 1 },
+        { Tag("DICING", "DIC_CURE"), 1, 9, 1 },
+        { Tag("DICING", "DIC_CURE"), 2, 9, 1 },
+        { Tag("DIC_CURE", "TPG"), 1, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 2, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 3, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 4, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 5, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 6, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 7, 30, 1 },
+        { Tag("DIC_CURE", "TPG"), 8, 30, 1 }
     };
 
     for (size_t i = 0; i < line.size(); i++){
