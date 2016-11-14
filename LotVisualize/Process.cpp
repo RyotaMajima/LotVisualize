@@ -86,7 +86,7 @@ void Process::lotStart(vector<Lot> &product){
             product[curtNo[i]].nowProcess = true;
             isUsed = true;
             isExtra = product[curtNo[i]].isExtra;
-            time = 0;
+            time = isExtra ? processTime / 2 : 0;
             cnt++;
             int idx = getInProcessIndex(name.thisName);
             (inProcess[idx].num)--;
