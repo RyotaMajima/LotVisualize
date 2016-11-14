@@ -6,7 +6,7 @@ vector<InProcess> Process::inProcess{
     InProcess{ "R_CURE", { 11, 5 } }, InProcess{ "PLASMA", { 5, -3 } },
     InProcess{ "MOLD", { 5, -10 } }, InProcess{ "MARK", { 15, -19 } },
     InProcess{ "DICING", { 0, -19 } }, InProcess{ "DIC_CURE", { -15, -19 } },
-    InProcess{ "TPG", { -15, -3 } }
+    InProcess{ "TPG", { -15, -3 } }, InProcess{ "REEL", { 35, 0 } }
 };
 
 void Process::outputInProcess(ofstream &ofs){
