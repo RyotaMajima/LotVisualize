@@ -12,7 +12,7 @@ public:
     int capacity;
     int processTime; //time for lot end
     bool isUsed;
-    bool isExtra;
+    vector<bool> isExtra;
     int time; //time from lot start
     vector<int> curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot

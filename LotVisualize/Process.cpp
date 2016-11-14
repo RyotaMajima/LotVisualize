@@ -24,7 +24,7 @@ Process::Process(Tag _name, int _machineNo, int _processTime, int _capacity){
     capacity = _capacity;
     processTime = _processTime;
     isUsed = false;
-    isExtra = false;
+    isExtra.resize(capacity);
     time = 0;
     curtNo.resize(capacity);
     cnt = 0;
@@ -85,8 +85,14 @@ void Process::lotStart(vector<Lot> &product){
             product[curtNo[i]].tag = name;
             product[curtNo[i]].nowProcess = true;
             isUsed = true;
-            isExtra = product[curtNo[i]].isExtra;
-            time = isExtra ? processTime / 2 : 0;
+            isExtra[i] = product[curtNo[i]].isExtra;
+            if (name.thisName.find("CURE") == -1){
+                time = isExtra[i] ? processTime / 2 : 0;
+            }
+            else{
+                time = 0;
+            }
+
             cnt++;
             int idx = getInProcessIndex(name.thisName);
             (inProcess[idx].num)--;
@@ -114,7 +120,7 @@ void Process::fileOutput(ofstream &ofs){
     if (isUsed){
         for (int i = 0; i < capacity; i++){
             ofs << pos.x + (i * 1.2) << "\t" << pos.y << "\t";
-            ofs << (isExtra ? 1 : 0) << endl;
+            ofs << (isExtra[i] ? 1 : 0) << endl;
         }
     }
 }
