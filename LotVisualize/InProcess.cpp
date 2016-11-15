@@ -7,7 +7,7 @@ InProcess::InProcess(){
 
 InProcess::InProcess(string _name, Position _pos, int _capacity){
     name = _name;
-    dq.resize(_capacity);
+    //dq.resize(_capacity);
     pos = _pos;
 }
 

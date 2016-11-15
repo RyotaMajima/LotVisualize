@@ -63,10 +63,10 @@ int main(){
     ofs << "timeStep = " << timeStep << endl;
     ofs.close();
 
-    for (int i = 0; i <= T; i += timeStep){
+    for (int i = 1; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
 
-        if (i % 30 == 1){
+        if (i % 30 == 0){
             for (int j = 0; j < 12; j++){
                 product.push_back(Lot());
             }
