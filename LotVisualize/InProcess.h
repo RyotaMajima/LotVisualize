@@ -3,11 +3,11 @@
 class InProcess{
 public:
     string name;
-    int num;
+    deque<int> dq;
     Position pos;
 
 public:
     InProcess();
-    InProcess(string _name, Position _pos);
+    InProcess(string _name, Position _pos, int _capacity);
     InProcess(const InProcess &rhs);
 };

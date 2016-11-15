@@ -2,18 +2,16 @@
 
 InProcess::InProcess(){
     name = "";
-    num = 0;
     pos = Position(0, 0);
 }
 
-InProcess::InProcess(string _name, Position _pos){
+InProcess::InProcess(string _name, Position _pos, int _capacity){
     name = _name;
-    num = 0;
+    dq.resize(_capacity);
     pos = _pos;
 }
 
 InProcess::InProcess(const InProcess &rhs){
     name = rhs.name;
-    num = rhs.num;
     pos = rhs.pos;
 }

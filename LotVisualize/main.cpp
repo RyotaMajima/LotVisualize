@@ -77,7 +77,7 @@ int main(){
         cout << "\t" << "qty" << "\t" << "current" << "\t";
         cout << "next" << "\t" << "now?" << endl;
         for (auto &lot : product){
-            //lot.showStatus();
+            lot.showStatus();
         }
         cout << "-------------------------------------" << endl << endl;
 
@@ -87,7 +87,7 @@ int main(){
 
         cout << "---- in-Process Status ----" << endl;
         for (auto &prc : Process::inProcess){
-            //cout << prc.name << "\t\t" << prc.num << " lot" << endl;
+            cout << prc.name << "\t\t" << prc.dq.size() << " lot" << endl;
         }
         cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs);
@@ -103,7 +103,7 @@ int main(){
         cout << "next" << "\t" << "capa" << "\t" << "isUsed?" << "\t";
         cout << "lot No." << endl;
         for (auto &prc : line){
-            //prc.showStatus();
+            prc.showStatus();
             prc.fileOutput(ofs);
         }
         cout << "--------------------------------------" << endl << endl;

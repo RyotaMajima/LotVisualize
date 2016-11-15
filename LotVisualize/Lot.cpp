@@ -9,7 +9,7 @@ Lot::Lot(){
     tag = Tag("None", "DB");
     nowProcess = false;
     leadTime = 0;
-    Process::inProcess[0].num++; //in-Process of "DB" increment
+    Process::inProcess[0].dq.push_back(lotNum); //in-Process of "DB" increment
 }
 
 void Lot::showStatus() const{

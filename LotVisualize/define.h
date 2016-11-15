@@ -7,7 +7,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
-#include <array>
+#include <deque>
 #include <iterator>
 #include <utility>
 #include <tuple>
@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int T = 200;
+const int T = 10;
 const int timeStep = 1;
 const int N = 12;
 

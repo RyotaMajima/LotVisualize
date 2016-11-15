@@ -1,20 +1,22 @@
 #include "header.h"
 
 vector<InProcess> Process::inProcess{
-    InProcess{ "DB", { -23, 21 } }, InProcess{ "DB_CURE", { -17, 5 } },
-    InProcess{ "WB", { -8, 5 } }, InProcess{ "RESIN", { -2, 5 } },
-    InProcess{ "R_CURE", { 11, 5 } }, InProcess{ "PLASMA", { 5, -3 } },
-    InProcess{ "MOLD", { 5, -10 } }, InProcess{ "MARK", { 15, -19 } },
-    InProcess{ "DICING", { 0, -19 } }, InProcess{ "DIC_CURE", { -15, -19 } },
-    InProcess{ "TPG", { -15, -3 } }, InProcess{ "REEL", { 35, 0 } }
+    InProcess{ "DB", { -23, 21 }, 20 }, InProcess{ "DB_CURE", { -17, 5 }, 10 },
+    InProcess{ "WB", { -8, 5 }, 5 }, InProcess{ "RESIN", { -2, 5 }, 20 },
+    InProcess{ "R_CURE", { 11, 5 }, 4 }, InProcess{ "PLASMA", { 5, -3 }, 30 },
+    InProcess{ "MOLD", { 5, -10 }, 3 }, InProcess{ "MARK", { 15, -19 }, 8 },
+    InProcess{ "DICING", { 0, -19 }, 10 }, InProcess{ "DIC_CURE", { -15, -19 }, 3 },
+    InProcess{ "TPG", { -15, -3 }, 40 }, InProcess{ "REEL", { 35, 0 }, 100 }
 };
 
 void Process::outputInProcess(ofstream &ofs){
     for (auto &prc : inProcess){
-        for (int i = 0; i < prc.num; i++){
-            ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << endl;
+        if (!prc.dq.empty()){
+            for (size_t i = 0; i < prc.dq.size(); i++){
+                ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << endl;
+            }
+            ofs << endl;
         }
-        ofs << endl;
     }
 }
 
@@ -46,18 +48,21 @@ void Process::showStatus() const{
 
 bool Process::hasInProcess(){
     int idx = getInProcessIndex(name.thisName);
-    return inProcess[idx].num >= capacity;
+    return (int)inProcess[idx].dq.size() >= capacity;
 }
 
 int Process::searchLot(vector<Lot> &product){
-    auto itr = find_if(product.begin(), product.end(),
-        [&](Lot &lot){return lot.nowProcess == false && lot.tag.nextName == name.thisName; });
-    if (itr != product.end()){
-        return distance(product.begin(), itr);
-    }
-    else{
-        return -1; //lot is not found
-    }
+    //auto itr = find_if(product.begin(), product.end(),
+    //    [&](Lot &lot){return lot.nowProcess == false && lot.tag.nextName == name.thisName; });
+    //if (itr != product.end()){
+    //    return distance(product.begin(), itr);
+    //}
+    //else{
+    //    return -1; //lot is not found
+    //}
+
+    int idx = getInProcessIndex(name.thisName);
+    return inProcess[idx].dq.front();
 }
 
 int Process::getInProcessIndex(string str){
@@ -95,7 +100,7 @@ void Process::lotStart(vector<Lot> &product){
 
             cnt++;
             int idx = getInProcessIndex(name.thisName);
-            (inProcess[idx].num)--;
+            inProcess[idx].dq.pop_front();
         }
     }
 }
@@ -106,9 +111,10 @@ void Process::lotEnd(vector<Lot> &product){
         product[curtNo[i]].nowProcess = false;
         isUsed = false;
         time = 0;
-        curtNo[i] = 0;
+
         int idx = getInProcessIndex(name.nextName);
-        (inProcess[idx].num)++;
+        inProcess[idx].dq.push_back(curtNo[i]);
+        curtNo[i] = 0;
     }
 }
 
