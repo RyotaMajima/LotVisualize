@@ -9,11 +9,12 @@ vector<InProcess> Process::inProcess{
     InProcess{ "TPG", { -15, -3 }, 40 }, InProcess{ "REEL", { 35, 0 }, 100 }
 };
 
-void Process::outputInProcess(ofstream &ofs){
+void Process::outputInProcess(ofstream &ofs, vector<Lot> &product){
     for (auto &prc : inProcess){
         if (!prc.dq.empty()){
             for (size_t i = 0; i < prc.dq.size(); i++){
-                ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << endl;
+                ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << "\t";
+                ofs << (product[i].isExtra ? 1 : 0) << endl;;
             }
             ofs << endl;
         }
@@ -52,15 +53,6 @@ bool Process::hasInProcess(){
 }
 
 int Process::searchLot(vector<Lot> &product){
-    //auto itr = find_if(product.begin(), product.end(),
-    //    [&](Lot &lot){return lot.nowProcess == false && lot.tag.nextName == name.thisName; });
-    //if (itr != product.end()){
-    //    return distance(product.begin(), itr);
-    //}
-    //else{
-    //    return -1; //lot is not found
-    //}
-
     int idx = getInProcessIndex(name.thisName);
     return inProcess[idx].dq.front();
 }

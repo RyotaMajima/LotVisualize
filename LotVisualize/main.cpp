@@ -90,7 +90,7 @@ int main(){
             cout << prc.name << "\t\t" << prc.dq.size() << " lot" << endl;
         }
         cout << "---------------------------" << endl << endl;
-        Process::outputInProcess(ofs);
+        Process::outputInProcess(ofs, product);
         ofs.close();
 
 

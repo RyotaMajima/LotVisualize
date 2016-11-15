@@ -4,7 +4,7 @@
 class Process{
 public:
     static vector<InProcess> inProcess;
-    static void outputInProcess(ofstream &ofs);
+    static void outputInProcess(ofstream &ofs, vector<Lot> &product);
 
 public:
     Tag name;
