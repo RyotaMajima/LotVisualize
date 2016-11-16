@@ -22,7 +22,6 @@ public:
     Process(Tag _name, int _machineNo, int _processTime, int _capacity);
     void showStatus() const; //show process status
     bool hasInProcess(); //return whether are there proper in-process lots
-    int searchLot(vector<Lot> &product); //searching next lot
     int getInProcessIndex(string str);
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);

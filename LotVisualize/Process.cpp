@@ -52,16 +52,6 @@ bool Process::hasInProcess(){
     return (int)inProcess[idx].dq.size() >= capacity;
 }
 
-int Process::searchLot(vector<Lot> &product){
-    int idx = getInProcessIndex(name.thisName);
-    if (!inProcess[idx].dq.empty()){
-        return inProcess[idx].dq.front();
-    }
-    else{
-        return -1;
-    }
-}
-
 int Process::getInProcessIndex(string str){
     auto itr = find_if(inProcess.begin(), inProcess.end(),
         [=](InProcess &prc){ return prc.name == str; });
