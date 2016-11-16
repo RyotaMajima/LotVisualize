@@ -75,30 +75,24 @@ int Process::getInProcessIndex(string str){
 }
 
 void Process::lotStart(vector<Lot> &product){
+    int idx = getInProcessIndex(name.thisName);
     for (int i = 0; i < capacity; i++){
-        curtNo[i] = searchLot(product);
-
-        if (curtNo[i] < 0){
-            cerr << "next " << name.thisName << " lot is not found" << endl;
-            return;
+        curtNo[i] = inProcess[idx].dq.front();
+        cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " start" << endl;
+        product[curtNo[i]].tag = name;
+        product[curtNo[i]].nowProcess = true;
+        isUsed = true;
+        isExtra[i] = product[curtNo[i]].isExtra;
+        if (name.thisName.find("CURE") == -1){
+            time = isExtra[i] ? processTime / 2 : 0;
         }
         else{
-            cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " start" << endl;
-            product[curtNo[i]].tag = name;
-            product[curtNo[i]].nowProcess = true;
-            isUsed = true;
-            isExtra[i] = product[curtNo[i]].isExtra;
-            if (name.thisName.find("CURE") == -1){
-                time = isExtra[i] ? processTime / 2 : 0;
-            }
-            else{
-                time = 0;
-            }
-
-            cnt++;
-            int idx = getInProcessIndex(name.thisName);
-            inProcess[idx].dq.pop_front();
+            time = 0;
         }
+
+        cnt++;
+        int idx = getInProcessIndex(name.thisName);
+        inProcess[idx].dq.pop_front();
     }
 }
 
@@ -108,7 +102,6 @@ void Process::lotEnd(vector<Lot> &product){
         product[curtNo[i]].nowProcess = false;
         isUsed = false;
         time = 0;
-
         int idx = getInProcessIndex(name.nextName);
         inProcess[idx].dq.push_back(curtNo[i]);
         curtNo[i] = 0;
