@@ -14,9 +14,15 @@ void Process::outputInProcess(ofstream &ofs, vector<Lot> &product){
         if (!prc.dq.empty()){
             for (size_t i = 0; i < prc.dq.size(); i++){
                 ofs << prc.pos.x + ((i % 10) * 1.2) << "\t" << prc.pos.y - (i / 10) * 2.0 << "\t";
-                ofs << (product[i].isExtra ? 1 : 0) << endl;;
+                ofs << (product[prc.dq[i]].isExtra ? 1 : 0) << endl;;
             }
             ofs << endl;
+
+            cout << prc.name << ": ";
+            for (auto &val : prc.dq){
+                cout << val << " ";
+            }
+            cout << endl;
         }
     }
 }
@@ -27,9 +33,9 @@ Process::Process(Tag _name, int _machineNo, int _processTime, int _capacity){
     capacity = _capacity;
     processTime = _processTime;
     isUsed = false;
-    isExtra.resize(capacity);
+    isExtra.resize(capacity, false);
     time = 0;
-    curtNo.resize(capacity);
+    curtNo.resize(capacity, 0);
     cnt = 0;
 }
 
