@@ -1,6 +1,6 @@
 #include "header.h"
 
-int Lot::NUM = 1;
+int Lot::NUM = 0;
 
 Lot::Lot(){
     lotNum = NUM++;
@@ -9,7 +9,7 @@ Lot::Lot(){
     tag = Tag("None", "DB");
     nowProcess = false;
     leadTime = 0;
-    Process::inProcess[0].dq.push_back(lotNum); //in-Process of "DB" increment
+    Process::inProcess[0].dq.push_back(lotNum); //in-Process of "DB" push_back
 }
 
 void Lot::showStatus() const{

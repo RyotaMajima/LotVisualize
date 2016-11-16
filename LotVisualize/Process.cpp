@@ -54,7 +54,12 @@ bool Process::hasInProcess(){
 
 int Process::searchLot(vector<Lot> &product){
     int idx = getInProcessIndex(name.thisName);
-    return inProcess[idx].dq.front();
+    if (!inProcess[idx].dq.empty()){
+        return inProcess[idx].dq.front();
+    }
+    else{
+        return -1;
+    }
 }
 
 int Process::getInProcessIndex(string str){

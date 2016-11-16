@@ -66,11 +66,11 @@ int main(){
     for (int i = 1; i <= T; i += timeStep){
         cout << "T = " << i << endl << endl; // time stamps
 
-        if (i % 30 == 0){
-            for (int j = 0; j < 12; j++){
-                product.push_back(Lot());
-            }
-        }
+        //if (i % 30 == 0){
+        //    for (int j = 0; j < 12; j++){
+        //        product.push_back(Lot());
+        //    }
+        //}
 
         //show lot status
         cout << "---------- All Lots Status ----------" << endl;
