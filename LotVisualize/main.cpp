@@ -93,7 +93,6 @@ int main(){
         Process::outputInProcess(ofs, product);
         ofs.close();
 
-
         //show & output process status
         sprintf(filename, "./res/prc%03d.txt", i);
         ofs.open(filename);

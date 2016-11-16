@@ -17,12 +17,6 @@ void Process::outputInProcess(ofstream &ofs, vector<Lot> &product){
                 ofs << (product[prc.dq[i]].isExtra ? 1 : 0) << endl;;
             }
             ofs << endl;
-
-            cout << prc.name << ": ";
-            for (auto &val : prc.dq){
-                cout << val << " ";
-            }
-            cout << endl;
         }
     }
 }
