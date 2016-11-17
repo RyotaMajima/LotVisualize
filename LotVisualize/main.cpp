@@ -87,7 +87,11 @@ int main(){
 
         cout << "---- in-Process Status ----" << endl;
         for (auto &prc : Process::inProcess){
-            cout << prc.name << "\t\t" << prc.dq.size() << " lot" << endl;
+            cout << prc.name << "\t\t" << prc.dq.size() << " lot" << ": ";
+            for (auto &val : prc.dq){
+                cout << val << " ";
+            }
+            cout << endl;
         }
         cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs, product);
@@ -108,18 +112,21 @@ int main(){
         cout << "--------------------------------------" << endl << endl;
         ofs.close();
 
+  
         for (auto &prc : line){
-            if (!prc.isUsed){
-                if (prc.hasInProcess()){
-                    prc.lotStart(product);
-                }
-            }
-            else{
-                prc.update();
-                if (prc.time >= prc.processTime){
-                    prc.lotEnd(product);
-                }
-            }
+            prc.update(product);
+     
+            //if (prc.state == State::WAIT){
+            //    if (prc.hasInProcess()){
+            //        prc.lotStart(product);
+            //    }
+            //}
+            //else{
+            //    prc.update();
+            //    if (prc.time >= prc.processTime){
+            //        prc.lotEnd(product);
+            //    }
+            //}
         }
 
         cout << endl << endl;

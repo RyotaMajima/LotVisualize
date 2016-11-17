@@ -1,6 +1,10 @@
 #pragma once
 #include "InProcess.h"
 
+enum struct State{
+    WORK, CHG, CHGED, TRB, WAIT
+};
+
 class Process{
 public:
     static vector<InProcess> inProcess;
@@ -11,11 +15,12 @@ public:
     int machineNo;
     int capacity;
     int processTime; //time for lot end
-    bool isUsed;
+    //bool isUsed;
     vector<bool> isExtra;
     int time; //time from lot start
     vector<int> curtNo; //index for current lot (-1 stands for error)
     int cnt; // count of producted lot
+    State state;
     Position pos;
 
 public:
@@ -25,6 +30,6 @@ public:
     int getInProcessIndex(string str);
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
-    void update(); //update under processing lot
+    void update(vector<Lot> &product); //update under processing lot
     void fileOutput(ofstream &ofs);
 };
