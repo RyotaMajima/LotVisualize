@@ -28,6 +28,7 @@ public:
     void showStatus() const; //show process status
     bool hasInProcess(); //return whether are there proper in-process lots
     int getInProcessIndex(string str);
+    void lotChange();
     void lotStart(vector<Lot> &product);
     void lotEnd(vector<Lot> &product);
     void update(vector<Lot> &product); //update under processing lot

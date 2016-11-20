@@ -26,7 +26,6 @@ Process::Process(Tag _name, int _machineNo, int _processTime, int _capacity){
     machineNo = _machineNo;
     capacity = _capacity;
     processTime = _processTime;
-    //isUsed = false;
     isExtra.resize(capacity, false);
     time = 0;
     curtNo.resize(capacity, 0);
@@ -36,7 +35,7 @@ Process::Process(Tag _name, int _machineNo, int _processTime, int _capacity){
 
 void Process::showStatus() const{
     cout << name.thisName << "\t" << machineNo << "\t" << name.nextName << "\t" << capacity << "\t";
-    cout << boolalpha << (state == State::WORK)  << "\t";
+    cout << boolalpha << (state == State::WORK) << "\t";
     if (state == State::WORK){
         for (auto &val : curtNo){
             cout << val << " ";
@@ -65,18 +64,26 @@ int Process::getInProcessIndex(string str){
     }
 }
 
+void Process::lotChange(){
+    int idx = getInProcessIndex(name.thisName);
+    if ((int)inProcess[idx].dq.size() < capacity){
+        cerr << "dq.size() error in lotChange() ";
+        cerr << "in " << name.thisName << " #" << machineNo << endl;
+        return;
+    }
+    for (int i = 0; i < capacity; i++){
+        curtNo[i] = inProcess[idx].dq.front();
+        inProcess[idx].dq.pop_front();
+    }
+    state = State::CHGED;
+}
+
 void Process::lotStart(vector<Lot> &product){
     int idx = getInProcessIndex(name.thisName);
     for (int i = 0; i < capacity; i++){
-        if (inProcess[idx].dq.size() < curtNo.size()){
-            cerr << name.thisName <<" error!" << endl;
-            return;
-        }
-        curtNo[i] = inProcess[idx].dq[i];
         cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " start" << endl;
         product[curtNo[i]].tag = name;
         product[curtNo[i]].nowProcess = true;
-        //isUsed = true;
         state = State::WORK;
         isExtra[i] = product[curtNo[i]].isExtra;
 
@@ -88,7 +95,6 @@ void Process::lotStart(vector<Lot> &product){
         }
 
         cnt++;
-        inProcess[idx].dq.pop_front();
     }
 }
 
@@ -96,12 +102,10 @@ void Process::lotEnd(vector<Lot> &product){
     for (int i = 0; i < capacity; i++){
         cout << "No." << product[curtNo[i]].lotNum << " " << name.thisName << " end" << endl;
         product[curtNo[i]].nowProcess = false;
-        //isUsed = false;
         state = State::WAIT;
         time = 0;
         int idx = getInProcessIndex(name.nextName);
         inProcess[idx].dq.push_back(curtNo[i]);
-        //curtNo[i] = 0;
     }
 }
 
@@ -115,6 +119,9 @@ void Process::update(vector<Lot> &product){
         }
         break;
     case State::CHG:
+        lotChange();
+        break;
+    case State::CHGED:
         lotStart(product);
         break;
     case State::TRB:
