@@ -138,7 +138,8 @@ void Process::fileOutput(ofstream &ofs){
     if (state == State::WORK){
         for (int i = 0; i < capacity; i++){
             ofs << pos.x + (i * 1.2) << "\t" << pos.y << "\t";
-            ofs << (isExtra[i] ? 1 : 0) << endl;
+            ofs << (isExtra[i] ? 1 : 0) << "\t";
+            ofs << static_cast<int>(state) << endl;
         }
     }
 }
