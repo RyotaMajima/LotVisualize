@@ -6,7 +6,7 @@ const vector<Position> ProcessPos{
     { -17.0, 14.0 }, { -17.0, 11.0 },
     { -7.0, 14.0 }, { -7.0, 11.0 },
     { -1.0, 14.0 }, { -1.0, 11.0 }, { 2.0, 14.0 }, { 2.0, 11.0 },
-    { 12.0, 14.0 }, { 12.0, 11.0 }, { 18.0, 14.0 }, { 18.0, 11.0 },
+    { 12.0, 14.0 }, { 12.0, 11.0 }, { 19.0, 14.0 }, { 19.0, 11.0 },
     { 21, -3 },
     { 21, -10 }, { 21, -13 },
     { 11, -20 },
@@ -73,27 +73,27 @@ int main(){
         }
 
         //show lot status
-        cout << "---------- All Lots Status ----------" << endl;
-        cout << "\t" << "qty" << "\t" << "current" << "\t";
-        cout << "next" << "\t" << "now?" << endl;
-        for (auto &lot : product){
-            lot.showStatus();
-        }
-        cout << "-------------------------------------" << endl << endl;
+        //cout << "---------- All Lots Status ----------" << endl;
+        //cout << "\t" << "qty" << "\t" << "current" << "\t";
+        //cout << "next" << "\t" << "now?" << endl;
+        //for (auto &lot : product){
+        //    lot.showStatus();
+        //}
+        //cout << "-------------------------------------" << endl << endl;
 
         //show & output in-process status
         sprintf(filename, "./res/inPrc%03d.txt", i);
         ofs.open(filename);
 
-        cout << "---- in-Process Status ----" << endl;
-        for (auto &prc : Process::inProcess){
-            cout << prc.name << "\t\t" << prc.dq.size() << " lot" << ": ";
-            for (auto &val : prc.dq){
-                cout << val << " ";
-            }
-            cout << endl;
-        }
-        cout << "---------------------------" << endl << endl;
+        //cout << "---- in-Process Status ----" << endl;
+        //for (auto &prc : Process::inProcess){
+        //    cout << prc.name << "\t\t" << prc.dq.size() << " lot" << ": ";
+        //    for (auto &val : prc.dq){
+        //        cout << val << " ";
+        //    }
+        //    cout << endl;
+        //}
+        //cout << "---------------------------" << endl << endl;
         Process::outputInProcess(ofs, product);
         ofs.close();
 
